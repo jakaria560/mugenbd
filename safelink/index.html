@@ -10,7 +10,7 @@
   content="width=device-width, initial-scale=1.0"
 >
 
-<title>Safelink Generator - MugenBD</title>
+<title>Safelink - MugenBD</title>
 
 <style>
 
@@ -24,7 +24,7 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   background:#f4f6fb;
   color:#222;
-  min-height:100vh;
+  line-height:1.6;
 }
 
 .header{
@@ -41,151 +41,118 @@ body{
 
 .container{
   width:100%;
-  max-width:650px;
+  max-width:700px;
   margin:auto;
   padding:15px;
 }
 
 .card{
   background:#fff;
-  margin-top:25px;
-  padding:28px 22px;
+  margin-top:20px;
+  padding:25px 20px;
   border-radius:14px;
-  box-shadow:0 4px 22px rgba(0,0,0,.08);
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  text-align:center;
 }
 
 .title{
-  text-align:center;
-  font-size:27px;
+  font-size:25px;
   font-weight:700;
   margin-bottom:8px;
 }
 
 .subtitle{
-  text-align:center;
-  color:#777;
+  color:#666;
   font-size:14px;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
 /* =====================================================
-   INPUT
+   AD
 ===================================================== */
 
-.label{
-  display:block;
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:7px;
-}
-
-.url-input{
+.ad-box{
   width:100%;
-  padding:14px;
-  border:1px solid #d9dce8;
-  border-radius:8px;
-  outline:none;
-  font-size:15px;
-  transition:.2s;
+  min-height:250px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  margin:20px auto;
 }
 
-.url-input:focus{
-  border-color:#4052b8;
-  box-shadow:
-    0 0 0 3px rgba(64,82,184,.1);
+.ad-inner{
+  width:300px;
+  max-width:100%;
+  min-height:250px;
+  overflow:hidden;
+}
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.countdown-box{
+  margin-top:20px;
+  padding:20px;
+  background:#f8f9ff;
+  border:1px solid #e1e5ff;
+  border-radius:12px;
+}
+
+.count-text{
+  font-size:15px;
+  color:#555;
+}
+
+.timer{
+  font-size:42px;
+  font-weight:700;
+  color:#4052b8;
+  margin:8px 0;
 }
 
 /* =====================================================
    BUTTON
 ===================================================== */
 
-.generate-btn{
-  width:100%;
+.get-btn{
   border:none;
   background:#4052b8;
   color:#fff;
-  padding:14px;
-  border-radius:8px;
-  font-size:17px;
+  font-size:18px;
   font-weight:700;
+  padding:13px 30px;
+  border-radius:8px;
   cursor:pointer;
-  margin-top:15px;
+  min-width:190px;
+  transition:.2s;
 }
 
-.generate-btn:hover{
+.get-btn:hover{
   background:#33439d;
 }
 
-/* =====================================================
-   RESULT
-===================================================== */
-
-.result{
-  display:none;
-  margin-top:25px;
-  padding:18px;
-  background:#f8f9ff;
-  border:1px solid #e1e5ff;
-  border-radius:10px;
-}
-
-.result-title{
-  font-size:16px;
-  font-weight:700;
-  margin-bottom:10px;
-}
-
-.generated-url{
-  width:100%;
-  padding:12px;
-  border:1px solid #d9dce8;
-  border-radius:7px;
-  background:#fff;
-  font-size:14px;
-}
-
-.copy-btn{
-  width:100%;
-  margin-top:10px;
-  border:none;
-  background:#222;
-  color:#fff;
-  padding:12px;
-  border-radius:7px;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.copy-btn:hover{
-  background:#111;
+.get-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
 /* =====================================================
-   ERROR
+   MESSAGE
 ===================================================== */
 
-.error{
-  display:none;
-  margin-top:15px;
-  color:#c62828;
-  background:#fff1f1;
-  border:1px solid #ffd5d5;
-  padding:12px;
-  border-radius:7px;
-  font-size:14px;
+.message{
+  margin-top:12px;
+  color:#666;
+  font-size:13px;
 }
 
-/* =====================================================
-   INFO
-===================================================== */
-
-.info{
+.footer-text{
   margin-top:20px;
   color:#777;
   font-size:13px;
   line-height:1.7;
-  text-align:center;
 }
 
 /* =====================================================
@@ -207,7 +174,16 @@ body{
   }
 
   .title{
-    font-size:23px;
+    font-size:22px;
+  }
+
+  .timer{
+    font-size:38px;
+  }
+
+  .get-btn{
+    width:100%;
+    max-width:250px;
   }
 
 }
@@ -242,92 +218,92 @@ body{
   <div class="card">
 
     <div class="title">
-      Safelink Generator
+      🔐 Safelink
     </div>
 
     <div class="subtitle">
-      Generate a MugenBD Safelink for your destination URL.
+      Your link is being prepared. Please wait a few seconds.
     </div>
 
 
     <!-- =================================================
-         INPUT
+         ADSTERra 300x250
     ================================================= -->
 
-    <label
-      class="label"
-      for="finalUrl"
-    >
-      Final URL
-    </label>
+    <div class="ad-box">
 
-    <input
-      id="finalUrl"
-      class="url-input"
-      type="url"
-      placeholder="https://example.com/your-link"
-      autocomplete="off"
-    >
+      <div class="ad-inner">
 
+        <script>
 
-    <!-- =================================================
-         GENERATE
-    ================================================= -->
+        atOptions = {
+          'key' : '0dfcd9d1378790bebfaf30f6b4efb71d',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
 
-    <button
-      id="generateBtn"
-      class="generate-btn"
-      type="button"
-    >
-      Generate Safelink
-    </button>
+        </script>
 
+        <script
+          src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invoke.js">
+        </script>
 
-    <!-- =================================================
-         ERROR
-    ================================================= -->
-
-    <div
-      id="error"
-      class="error"
-    ></div>
-
-
-    <!-- =================================================
-         RESULT
-    ================================================= -->
-
-    <div
-      id="result"
-      class="result"
-    >
-
-      <div class="result-title">
-        ✅ Safelink Generated
       </div>
 
-      <input
-        id="generatedUrl"
-        class="generated-url"
-        type="text"
-        readonly
+    </div>
+
+
+    <!-- =================================================
+         COUNTDOWN
+    ================================================= -->
+
+    <div class="countdown-box">
+
+      <div class="count-text">
+        Please wait
+      </div>
+
+      <div
+        id="timer"
+        class="timer"
       >
+        10
+      </div>
+
+      <div
+        id="status"
+        class="message"
+      >
+        Your link will be ready shortly.
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         GET LINK
+    ================================================= -->
+
+    <div style="margin-top:20px;">
 
       <button
-        id="copyBtn"
-        class="copy-btn"
+        id="getLink"
+        class="get-btn"
         type="button"
+        disabled
       >
-        Copy Safelink
+        Please wait...
       </button>
 
     </div>
 
 
-    <div class="info">
+    <div class="footer-text">
 
-      Paste your final destination URL above and
-      generate a MugenBD Safelink.
+      MugenBD Safelink helps prepare your requested
+      destination link before continuing.
 
     </div>
 
@@ -339,210 +315,143 @@ body{
 <script>
 
 /* =====================================================
+   GET FINAL URL
+===================================================== */
+
+const params =
+  new URLSearchParams(window.location.search);
+
+const encodedUrl =
+  params.get("url");
+
+
+/* =====================================================
    ELEMENTS
 ===================================================== */
 
-const finalUrlInput =
-  document.getElementById("finalUrl");
+const timer =
+  document.getElementById("timer");
 
-const generateBtn =
-  document.getElementById("generateBtn");
+const status =
+  document.getElementById("status");
 
-const generatedUrl =
-  document.getElementById("generatedUrl");
-
-const result =
-  document.getElementById("result");
-
-const errorBox =
-  document.getElementById("error");
-
-const copyBtn =
-  document.getElementById("copyBtn");
+const getLink =
+  document.getElementById("getLink");
 
 
 /* =====================================================
-   GENERATE
+   DECODE URL
 ===================================================== */
 
-generateBtn.addEventListener(
-  "click",
-  function(){
+let finalUrl = null;
 
-    const finalUrl =
-      finalUrlInput.value.trim();
+try {
 
+  if(encodedUrl){
 
-    /* -----------------------------------------------
-       VALIDATION
-    ----------------------------------------------- */
-
-    if(!finalUrl){
-
-      showError(
-        "Please enter a destination URL."
-      );
-
-      return;
-
-    }
-
-
-    let parsedUrl;
-
-
-    try{
-
-      parsedUrl =
-        new URL(finalUrl);
-
-    }catch{
-
-      showError(
-        "Please enter a valid URL."
-      );
-
-      return;
-
-    }
-
-
-    if(
-      parsedUrl.protocol !== "http:" &&
-      parsedUrl.protocol !== "https:"
-    ){
-
-      showError(
-        "Only HTTP and HTTPS URLs are allowed."
-      );
-
-      return;
-
-    }
-
-
-    /* -----------------------------------------------
-       HIDE ERROR
-    ----------------------------------------------- */
-
-    errorBox.style.display =
-      "none";
-
-
-    /* -----------------------------------------------
-       CREATE SAFE LINK
-    ----------------------------------------------- */
-
-    const encodedUrl =
-      encodeURIComponent(finalUrl);
-
-
-    const baseUrl =
-      window.location.origin;
-
-
-    const safeLink =
-      baseUrl +
-      "/safelink/?url=" +
-      encodedUrl;
-
-
-    /* -----------------------------------------------
-       SHOW RESULT
-    ----------------------------------------------- */
-
-    generatedUrl.value =
-      safeLink;
-
-    result.style.display =
-      "block";
-
-
-    /* -----------------------------------------------
-       SELECT RESULT
-    ----------------------------------------------- */
-
-    generatedUrl.focus();
-
-    generatedUrl.select();
+    finalUrl =
+      decodeURIComponent(encodedUrl);
 
   }
-);
+
+} catch(error){
+
+  finalUrl = null;
+
+}
 
 
 /* =====================================================
-   COPY
+   INVALID LINK
 ===================================================== */
 
-copyBtn.addEventListener(
-  "click",
-  async function(){
+if(
+  !finalUrl ||
+  !/^https?:\/\//i.test(finalUrl)
+){
 
-    const value =
-      generatedUrl.value;
+  timer.textContent = "—";
+
+  status.textContent =
+    "Invalid or missing safelink.";
+
+  getLink.disabled = true;
+
+  getLink.textContent =
+    "Invalid Link";
+
+}
 
 
-    try{
+/* =====================================================
+   VALID LINK
+===================================================== */
 
-      await navigator.clipboard.writeText(
-        value
-      );
+else{
 
-      copyBtn.textContent =
-        "✓ Copied!";
+  let seconds = 10;
 
 
-      setTimeout(
-        function(){
+  timer.textContent =
+    seconds;
 
-          copyBtn.textContent =
-            "Copy Safelink";
 
-        },
-        1500
-      );
+  const countdown =
+    setInterval(function(){
 
-    }catch{
+      seconds--;
 
-      generatedUrl.focus();
 
-      generatedUrl.select();
+      timer.textContent =
+        seconds;
 
-      document.execCommand("copy");
 
-      copyBtn.textContent =
-        "✓ Copied!";
+      if(seconds <= 0){
 
-      setTimeout(
-        function(){
+        clearInterval(countdown);
 
-          copyBtn.textContent =
-            "Copy Safelink";
 
-        },
-        1500
-      );
+        timer.textContent =
+          "✓";
+
+
+        status.textContent =
+          "Your link is ready.";
+
+
+        getLink.disabled =
+          false;
+
+
+        getLink.textContent =
+          "Get Link";
+
+      }
+
+    },1000);
+
+
+  /* ===================================================
+     GET LINK
+  =================================================== */
+
+  getLink.addEventListener(
+    "click",
+    function(){
+
+      if(!finalUrl) return;
+
+
+      /*
+       * Replace the current page with
+       * the destination URL.
+       */
+
+      window.location.href =
+        finalUrl;
 
     }
-
-  }
-);
-
-
-/* =====================================================
-   ERROR FUNCTION
-===================================================== */
-
-function showError(message){
-
-  errorBox.textContent =
-    message;
-
-  errorBox.style.display =
-    "block";
-
-  result.style.display =
-    "none";
+  );
 
 }
 
@@ -551,4 +460,4 @@ function showError(message){
 
 </body>
 
-  </html>
+</html>
