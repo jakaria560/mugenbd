@@ -107,6 +107,11 @@
       transform: scale(.98);
     }
 
+    #submitBtn:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+    }
+
     .result-box {
       display: none;
       max-width: 760px;
@@ -226,15 +231,18 @@
 <body>
 
   <header class="header">
+
     <div class="brand">
       <span>MugenBD</span>
       <span class="brand-icon">🔗</span>
     </div>
 
     <div class="generator-area">
+
       <h1 class="title">🛡️ Generate Link</h1>
 
       <div class="generator-box">
+
         <div class="link-icon">🔗</div>
 
         <input
@@ -244,100 +252,267 @@
           autocomplete="off"
         >
 
-        <button id="submitBtn" type="button">🛡️ Submit</button>
+        <button id="submitBtn" type="button">
+          🛡️ Submit
+        </button>
+
       </div>
 
       <div id="message" class="message error"></div>
 
       <div id="resultBox" class="result-box">
-        <div class="result-row">
-          <div class="result-label">Result: ✔</div>
 
-          <input id="shortUrl" type="text" readonly>
+        <div class="result-row">
+
+          <div class="result-label">
+            Result: ✔
+          </div>
+
+          <input
+            id="shortUrl"
+            type="text"
+            readonly
+          >
+
         </div>
 
         <div class="copy-wrap">
-          <button id="copyBtn" type="button">▣ Copy URL</button>
+
+          <button id="copyBtn" type="button">
+            ▣ Copy URL
+          </button>
+
         </div>
+
       </div>
+
     </div>
+
   </header>
 
+
   <script>
-    const urlInput = document.getElementById("urlInput");
-    const submitBtn = document.getElementById("submitBtn");
-    const resultBox = document.getElementById("resultBox");
-    const shortUrl = document.getElementById("shortUrl");
-    const copyBtn = document.getElementById("copyBtn");
-    const message = document.getElementById("message");
 
-    function generateSlug(length = 7) {
-      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      let slug = "";
+    // ==========================================
+    // CLOUDFLARE WORKER API
+    // ==========================================
 
-      for (let i = 0; i < length; i++) {
-        slug += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
+    const API_URL =
+      "https://mugenbd-link-api.itsjakaria56.workers.dev";
 
-      return slug;
-    }
+
+    // ==========================================
+    // ELEMENTS
+    // ==========================================
+
+    const urlInput =
+      document.getElementById("urlInput");
+
+    const submitBtn =
+      document.getElementById("submitBtn");
+
+    const resultBox =
+      document.getElementById("resultBox");
+
+    const shortUrl =
+      document.getElementById("shortUrl");
+
+    const copyBtn =
+      document.getElementById("copyBtn");
+
+    const message =
+      document.getElementById("message");
+
+
+    // ==========================================
+    // SHOW ERROR
+    // ==========================================
 
     function showError(text) {
+
       message.textContent = text;
+
       message.style.display = "block";
+
       resultBox.style.display = "none";
     }
 
-    submitBtn.addEventListener("click", function () {
-      const originalUrl = urlInput.value.trim();
 
+    // ==========================================
+    // GENERATE SHORT LINK
+    // ==========================================
+
+    submitBtn.addEventListener("click", async function () {
+
+      const originalUrl =
+        urlInput.value.trim();
+
+
+      // Empty URL
       if (!originalUrl) {
+
         showError("Please enter a URL.");
+
         return;
       }
 
-      try {
-        const parsedUrl = new URL(originalUrl);
 
-        if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
-          showError("Please enter a valid HTTP or HTTPS URL.");
+      // Validate URL
+      try {
+
+        const parsedUrl =
+          new URL(originalUrl);
+
+        if (
+          parsedUrl.protocol !== "http:" &&
+          parsedUrl.protocol !== "https:"
+        ) {
+
+          showError(
+            "Please enter a valid HTTP or HTTPS URL."
+          );
+
           return;
         }
+
       } catch (error) {
-        showError("Please enter a valid URL.");
+
+        showError(
+          "Please enter a valid URL."
+        );
+
         return;
       }
+
+
+      // Loading state
+
+      submitBtn.disabled = true;
+
+      submitBtn.textContent = "Generating...";
 
       message.style.display = "none";
 
-      const slug = generateSlug();
-      const baseUrl = window.location.origin;
-      const generatedUrl = baseUrl + "/article-" + slug;
+      resultBox.style.display = "none";
 
-      shortUrl.value = generatedUrl;
-      resultBox.style.display = "block";
-    });
 
-    copyBtn.addEventListener("click", async function () {
       try {
-        await navigator.clipboard.writeText(shortUrl.value);
-        copyBtn.textContent = "✔ Copied!";
 
-        setTimeout(() => {
-          copyBtn.textContent = "▣ Copy URL";
-        }, 1800);
+        // Send URL to Cloudflare Worker
+
+        const response = await fetch(
+          API_URL + "/generate",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+              final_url: originalUrl
+            })
+          }
+        );
+
+
+        const data =
+          await response.json();
+
+
+        // API error
+
+        if (
+          !response.ok ||
+          !data.success
+        ) {
+
+          throw new Error(
+            data.error ||
+            "Unable to generate short link."
+          );
+        }
+
+
+        // Create final short URL
+
+        const generatedUrl =
+          API_URL + "/go/" + data.short_code;
+
+
+        shortUrl.value =
+          generatedUrl;
+
+
+        resultBox.style.display =
+          "block";
+
+
       } catch (error) {
-        shortUrl.select();
-        document.execCommand("copy");
-        copyBtn.textContent = "✔ Copied!";
 
-        setTimeout(() => {
-          copyBtn.textContent = "▣ Copy URL";
-        }, 1800);
+        showError(
+          error.message ||
+          "Something went wrong. Please try again."
+        );
+
+      } finally {
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+          "🛡️ Submit";
       }
+
     });
+
+
+    // ==========================================
+    // COPY URL
+    // ==========================================
+
+    copyBtn.addEventListener(
+      "click",
+      async function () {
+
+        try {
+
+          await navigator.clipboard.writeText(
+            shortUrl.value
+          );
+
+          copyBtn.textContent =
+            "✔ Copied!";
+
+          setTimeout(() => {
+
+            copyBtn.textContent =
+              "▣ Copy URL";
+
+          }, 1800);
+
+
+        } catch (error) {
+
+          shortUrl.select();
+
+          document.execCommand("copy");
+
+          copyBtn.textContent =
+            "✔ Copied!";
+
+          setTimeout(() => {
+
+            copyBtn.textContent =
+              "▣ Copy URL";
+
+          }, 1800);
+
+        }
+
+      }
+    );
+
   </script>
 
 </body>
 </html>
-
