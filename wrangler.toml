@@ -1,0 +1,8 @@
+name = "mugenbd-link-api"
+main = "worker.js"
+compatibility_date = "2026-08-10"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mugenbd_links"
+database_id = "67b4480e-4d96-469a-b53d-a4a2ea2247a7"
