@@ -1,6 +1,11 @@
-// MugenBD Link System - GitHub deployment
+// =====================================================
+// MugenBD Link System
+// Cloudflare Worker + D1
+// =====================================================
+
 export default {
   async fetch(request, env) {
+
     const url = new URL(request.url);
 
     // =====================================================
@@ -24,8 +29,13 @@ export default {
     // TEST DATABASE
     // =====================================================
 
-    if (url.pathname === "/test" && request.method === "GET") {
+    if (
+      url.pathname === "/test" &&
+      request.method === "GET"
+    ) {
+
       try {
+
         const result = await env.DB
           .prepare(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='links'"
@@ -45,7 +55,9 @@ export default {
             }
           }
         );
+
       } catch (error) {
+
         return new Response(
           JSON.stringify({
             success: false,
@@ -70,12 +82,15 @@ export default {
       url.pathname === "/generate" &&
       request.method === "POST"
     ) {
+
       try {
+
         const body = await request.json();
 
         const finalUrl = body.final_url;
 
         if (!finalUrl) {
+
           return new Response(
             JSON.stringify({
               success: false,
@@ -91,21 +106,26 @@ export default {
           );
         }
 
-        // Validate final URL
+        // Validate URL
+
         try {
-          const parsed = new URL(finalUrl);
+
+          const parsedUrl = new URL(finalUrl);
 
           if (
-            parsed.protocol !== "http:" &&
-            parsed.protocol !== "https:"
+            parsedUrl.protocol !== "http:" &&
+            parsedUrl.protocol !== "https:"
           ) {
             throw new Error("Invalid URL");
           }
+
         } catch {
+
           return new Response(
             JSON.stringify({
               success: false,
-              error: "Please provide a valid HTTP or HTTPS URL."
+              error:
+                "Please provide a valid HTTP or HTTPS URL."
             }),
             {
               status: 400,
@@ -117,10 +137,14 @@ export default {
           );
         }
 
+        // Generate short code
+
         const shortCode = crypto
           .randomUUID()
           .replaceAll("-", "")
           .slice(0, 7);
+
+        // Save to D1
 
         await env.DB
           .prepare(
@@ -145,7 +169,9 @@ export default {
             }
           }
         );
+
       } catch (error) {
+
         return new Response(
           JSON.stringify({
             success: false,
@@ -170,17 +196,23 @@ export default {
       url.pathname.startsWith("/go/") &&
       request.method === "GET"
     ) {
+
       const shortCode = url.pathname
         .replace("/go/", "")
         .trim();
 
       if (!shortCode) {
-        return new Response("Invalid short link.", {
-          status: 400
-        });
+
+        return new Response(
+          "Invalid short link.",
+          {
+            status: 400
+          }
+        );
       }
 
       try {
+
         const result = await env.DB
           .prepare(
             "SELECT final_url FROM links WHERE short_code = ? LIMIT 1"
@@ -188,57 +220,19 @@ export default {
           .bind(shortCode)
           .first();
 
-        if (!result || !result.final_url) {
+        // =================================================
+        // LINK NOT FOUND
+        // =================================================
+
+        if (
+          !result ||
+          !result.final_url
+        ) {
+
           return new Response(
             `
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <meta name="viewport" content="width=device-width,initial-scale=1">
-              <title>Link Not Found - MugenBD</title>
-              <style>
-                body{
-                  font-family:Arial,sans-serif;
-                  background:#f5f7fb;
-                  text-align:center;
-                  padding:60px 20px;
-                  color:#222;
-                }
-                .box{
-                  max-width:500px;
-                  margin:auto;
-                  background:white;
-                  padding:35px 20px;
-                  border-radius:15px;
-                  box-shadow:0 5px 25px rgba(0,0,0,.08);
-                }
-              </style>
-            </head>
-            <body>
-              <div class="box">
-                <h2>404 - Link Not Found</h2>
-                <p>This MugenBD link does not exist or has expired.</p>
-              </div>
-            </body>
-            </html>
-            `,
-            {
-              status: 404,
-              headers: {
-                "Content-Type": "text/html;charset=UTF-8"
-              }
-            }
-          );
-        }
-
-        const finalUrl = result.final_url;
-
-        // =================================================
-        // ARTICLE / UNLOCK PAGE
-        // =================================================
-
-        const html = `
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -250,9 +244,102 @@ export default {
   content="width=device-width, initial-scale=1.0"
 >
 
-<title>Top 10 Best Anime - MugenBD</title>
+<title>Link Not Found - MugenBD</title>
 
 <style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f6fb;
+  color:#222;
+  padding:50px 15px;
+}
+
+.box{
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:35px 20px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+h2{
+  margin-top:0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>
+404 - Link Not Found
+</h2>
+
+<p>
+This MugenBD link does not exist or has expired.
+</p>
+
+</div>
+
+</body>
+
+</html>
+            `,
+            {
+              status: 404,
+              headers: {
+                "Content-Type":
+                  "text/html;charset=UTF-8"
+              }
+            }
+          );
+        }
+
+        // =================================================
+        // FINAL URL
+        // =================================================
+
+        const finalUrl = result.final_url;
+
+        // =================================================
+        // ARTICLE / UNLOCK PAGE
+        // =================================================
+
+        const html = `
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Top 10 Best Anime You Should Watch - MugenBD
+</title>
+
+<style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
 
 *{
   box-sizing:border-box;
@@ -278,7 +365,9 @@ body{
   padding:15px;
 }
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .header{
   background:#4052b8;
@@ -292,18 +381,17 @@ body{
   font-weight:700;
 }
 
-.logo span{
-  font-size:30px;
-}
-
-/* ARTICLE CARD */
+/* =====================================================
+   ARTICLE CARD
+===================================================== */
 
 .article-card{
   background:#fff;
   margin-top:18px;
   border-radius:12px;
   overflow:hidden;
-  box-shadow:0 3px 18px rgba(0,0,0,.08);
+  box-shadow:
+    0 3px 18px rgba(0,0,0,.08);
 }
 
 .article-content{
@@ -323,7 +411,9 @@ body{
   margin-bottom:18px;
 }
 
-/* AD CONTAINERS */
+/* =====================================================
+   ADS
+===================================================== */
 
 .ad-box{
   width:100%;
@@ -335,15 +425,17 @@ body{
 }
 
 .ad-300{
-  width:100%;
-  max-width:300px;
+  width:300px;
+  max-width:100%;
   min-height:250px;
+  overflow:hidden;
 }
 
 .ad-728{
   width:100%;
   max-width:728px;
   min-height:90px;
+  overflow:hidden;
 }
 
 .ad-728-inner{
@@ -352,7 +444,9 @@ body{
   overflow:hidden;
 }
 
-/* GET LINK */
+/* =====================================================
+   UNLOCK BOX
+===================================================== */
 
 .unlock-box{
   background:#f8f9ff;
@@ -378,7 +472,7 @@ body{
 .get-btn{
   border:none;
   background:#4052b8;
-  color:white;
+  color:#fff;
   font-size:18px;
   font-weight:700;
   padding:13px 28px;
@@ -404,7 +498,13 @@ body{
   display:none;
 }
 
-/* ARTICLE */
+/* =====================================================
+   ARTICLE
+===================================================== */
+
+.article-text{
+  scroll-margin-top:15px;
+}
 
 .article-text h2{
   color:#4052b8;
@@ -425,7 +525,17 @@ body{
   margin-bottom:15px;
 }
 
-/* FINAL */
+/* =====================================================
+   SECOND GATE
+===================================================== */
+
+#secondGate{
+  scroll-margin-top:20px;
+}
+
+/* =====================================================
+   FINAL LINK
+===================================================== */
 
 .final-box{
   display:none;
@@ -450,7 +560,9 @@ body{
   margin-top:8px;
 }
 
-/* MOBILE */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:600px){
 
@@ -472,7 +584,7 @@ body{
 
   .ad-728{
     width:100%;
-    min-height:auto;
+    min-height:90px;
   }
 
   .ad-728-inner{
@@ -497,14 +609,22 @@ body{
 
 <body>
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="header">
 
-  <div class="logo">
-    MugenBD 🔗
-  </div>
+<div class="logo">
+MugenBD 🔗
+</div>
 
 </header>
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="container">
 
@@ -513,51 +633,73 @@ body{
 <div class="article-content">
 
 <h1 class="article-title">
+
 Top 10 Best Anime You Should Watch
+
 </h1>
 
 <div class="meta">
+
 MugenBD • Anime Guide
+
 </div>
 
 
-<!-- =========================================
+<!-- =====================================================
      AD #1 — 300x250
-========================================= -->
+===================================================== -->
 
 <div class="ad-box">
 
 <div class="ad-300">
 
 <script>
-  atOptions = {
-    'key' : '0dfcd9d1378790bebfaf30f6b4efb71d',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
+
+atOptions = {
+
+  'key':
+  '0dfcd9d1378790bebfaf30f6b4efb71d',
+
+  'format':'iframe',
+
+  'height':250,
+
+  'width':300,
+
+  'params':{}
+
+};
+
 </script>
 
-<script src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invoke.js"></script>
+<script
+src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invoke.js">
+</script>
 
 </div>
 
 </div>
 
 
-<!-- =========================================
-     GET LINK #1
-========================================= -->
+<!-- =====================================================
+     FIRST GATE
+===================================================== -->
 
-<div class="unlock-box">
+<div
+  id="firstGate"
+  class="unlock-box"
+>
 
 <div class="unlock-title">
+
 🔐 Continue to Article
+
 </div>
 
 <div class="unlock-text">
-Wait a few seconds to continue.
+
+Click continue and wait a few seconds.
+
 </div>
 
 <button
@@ -565,109 +707,178 @@ Wait a few seconds to continue.
   class="get-btn"
   type="button"
 >
+
 Continue
+
 </button>
 
-<div id="count1" class="countdown">
+<div
+  id="count1"
+  class="countdown"
+>
+
 Please wait <b>10</b> seconds...
-</div>
 
 </div>
 
+</div>
 
-<!-- =========================================
-     ARTICLE CONTENT
-========================================= -->
 
-<div id="article" class="article-text">
+<!-- =====================================================
+     ARTICLE
+===================================================== -->
+
+<div
+  id="article"
+  class="article-text"
+>
 
 <h2>
+
 Top 10 Best Anime
+
 </h2>
 
 <p>
-Anime has become one of the most popular forms of entertainment
-around the world. From action and adventure to fantasy and
-comedy, there are countless series for every type of viewer.
+
+Anime has become one of the most popular forms
+of entertainment around the world. From action
+and adventure to fantasy and comedy, there are
+countless series for every type of viewer.
+
 </p>
 
 <p>
-Here are ten popular anime titles that are worth checking out.
+
+Here are ten popular anime titles that are worth
+checking out.
+
 </p>
+
 
 <ol>
 
 <li>
+
 <strong>One Piece</strong><br>
-A legendary adventure following Monkey D. Luffy and his crew
-as they search for the legendary One Piece treasure.
+
+A legendary adventure following Monkey D. Luffy
+and his crew as they search for the legendary
+One Piece treasure.
+
 </li>
 
+
 <li>
+
 <strong>Naruto Shippuden</strong><br>
-A story about Naruto Uzumaki, a young ninja who works hard
-to achieve his dream of becoming Hokage.
+
+A story about Naruto Uzumaki, a young ninja who
+works hard to achieve his dream of becoming Hokage.
+
 </li>
 
+
 <li>
+
 <strong>Attack on Titan</strong><br>
-A dark action series featuring humanity's struggle for survival
-against mysterious giant Titans.
+
+A dark action series featuring humanity's struggle
+for survival against mysterious giant Titans.
+
 </li>
 
+
 <li>
+
 <strong>Demon Slayer</strong><br>
-Tanjiro Kamado begins a dangerous journey after tragedy strikes
-his family and he discovers the world of Demon Slayers.
+
+Tanjiro Kamado begins a dangerous journey after
+tragedy strikes his family and he discovers the
+world of Demon Slayers.
+
 </li>
 
+
 <li>
+
 <strong>Jujutsu Kaisen</strong><br>
-A supernatural action anime following Yuji Itadori as he becomes
-involved in the dangerous world of cursed spirits.
+
+A supernatural action anime following Yuji Itadori
+as he becomes involved in the dangerous world
+of cursed spirits.
+
 </li>
 
+
 <li>
+
 <strong>Dragon Ball</strong><br>
-A classic anime franchise filled with powerful warriors,
-fantastic battles and unforgettable adventures.
+
+A classic anime franchise filled with powerful
+warriors, fantastic battles and unforgettable
+adventures.
+
 </li>
 
+
 <li>
+
 <strong>Death Note</strong><br>
-A psychological thriller about a mysterious notebook that gives
-its owner the power to determine who lives and dies.
+
+A psychological thriller about a mysterious notebook
+that gives its owner the power to determine who
+lives and dies.
+
 </li>
 
+
 <li>
+
 <strong>My Hero Academia</strong><br>
-A superhero story about Izuku Midoriya and his journey to become
-a professional hero.
+
+A superhero story about Izuku Midoriya and his
+journey to become a professional hero.
+
 </li>
 
+
 <li>
+
 <strong>Hunter x Hunter</strong><br>
-Gon Freecss sets out on an adventure to become a Hunter and
-discover the truth about his missing father.
+
+Gon Freecss sets out on an adventure to become
+a Hunter and discover the truth about his missing
+father.
+
 </li>
 
+
 <li>
+
 <strong>Fullmetal Alchemist: Brotherhood</strong><br>
-Two brothers search for a way to restore their bodies after
-a dangerous alchemy experiment goes wrong.
+
+Two brothers search for a way to restore their
+bodies after a dangerous alchemy experiment
+goes wrong.
+
 </li>
 
 </ol>
 
+
 <p>
-Every anime fan has different preferences, so consider this list
-a starting point for discovering new series.
+
+Every anime fan has different preferences, so
+consider this list a starting point for discovering
+new series.
+
 </p>
 
 
-<!-- =========================================
+<!-- =====================================================
      AD #2 — 728x90
-========================================= -->
+===================================================== -->
 
 <div class="ad-box">
 
@@ -676,16 +887,27 @@ a starting point for discovering new series.
 <div class="ad-728-inner">
 
 <script>
-  atOptions = {
-    'key' : '88a8f1e26c8dfb14584280ccb0c4d180',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
+
+atOptions = {
+
+  'key':
+  '88a8f1e26c8dfb14584280ccb0c4d180',
+
+  'format':'iframe',
+
+  'height':90,
+
+  'width':728,
+
+  'params':{}
+
+};
+
 </script>
 
-<script src="https://www.highperformanceformat.com/88a8f1e26c8dfb14584280ccb0c4d180/invoke.js"></script>
+<script
+src="https://www.highperformanceformat.com/88a8f1e26c8dfb14584280ccb0c4d180/invoke.js">
+</script>
 
 </div>
 
@@ -694,47 +916,56 @@ a starting point for discovering new series.
 </div>
 
 
-<!-- =========================================
-     GET LINK #2
-========================================= -->
+<!-- =====================================================
+     SECOND GATE
+===================================================== -->
 
 <div
-  id="secondUnlock"
+  id="secondGate"
   class="unlock-box"
 >
 
 <div class="unlock-title">
-🔗 Get Your Link
+
+🔗 Your Link Is Almost Ready
+
 </div>
 
 <div class="unlock-text">
-Complete the short countdown to continue.
+
+Please wait while we prepare your link.
+
 </div>
 
-<button
-  id="get2"
-  class="get-btn"
-  type="button"
+<div
+  id="count2"
+  class="countdown"
+  style="display:block;"
 >
-Get Link
-</button>
 
-<div id="count2" class="countdown">
 Please wait <b>5</b> seconds...
+
 </div>
 
-<div id="finalBox" class="final-box">
+<div
+  id="finalBox"
+  class="final-box"
+>
 
 <a
   id="finalLink"
   class="final-btn"
   href="#"
 >
+
 Go to Link
+
 </a>
 
 <div class="note">
+
 Your destination link is ready.
+
 </div>
 
 </div>
@@ -748,24 +979,33 @@ Your destination link is ready.
 </main>
 
 
-<!-- =========================================
+<!-- =====================================================
      POPUNDER
-========================================= -->
+===================================================== -->
 
 <script src="https://pl28212577.effectivecpmnetwork.com/7d/8f/a5/7d8fa5de8929ad62b16aac29b2f30620.js"></script>
 
 
-<!-- =========================================
+<!-- =====================================================
      SOCIAL BAR
-========================================= -->
+===================================================== -->
 
 <script src="https://pl28212586.effectivecpmnetwork.com/77/91/35/779135afb82017d428bdb26e1ba8a7f5.js"></script>
 
 
 <script>
 
+// =====================================================
+// FINAL URL FROM D1
+// =====================================================
+
 const finalUrl =
   ${JSON.stringify(finalUrl)};
+
+
+// =====================================================
+// ELEMENTS
+// =====================================================
 
 const get1 =
   document.getElementById("get1");
@@ -773,8 +1013,11 @@ const get1 =
 const count1 =
   document.getElementById("count1");
 
-const get2 =
-  document.getElementById("get2");
+const firstGate =
+  document.getElementById("firstGate");
+
+const secondGate =
+  document.getElementById("secondGate");
 
 const count2 =
   document.getElementById("count2");
@@ -786,84 +1029,24 @@ const finalLink =
   document.getElementById("finalLink");
 
 
-// ==========================================
-// GET LINK #1
-// ==========================================
+// =====================================================
+// STATE
+// =====================================================
 
 let started1 = false;
 
-get1.addEventListener("click", function(){
-
-  if(started1) return;
-
-  started1 = true;
-
-  get1.disabled = true;
-
-  get1.textContent = "Please wait...";
-
-  count1.style.display = "block";
-
-  let seconds = 10;
-
-  count1.innerHTML =
-    "Please wait <b>" +
-    seconds +
-    "</b> seconds...";
-
-  const timer = setInterval(function(){
-
-    seconds--;
-
-    count1.innerHTML =
-      "Please wait <b>" +
-      seconds +
-      "</b> seconds...";
-
-    if(seconds <= 0){
-
-      clearInterval(timer);
-
-      get1.disabled = false;
-
-      get1.textContent = "Continue to Article";
-
-      count1.innerHTML =
-        "✔ Ready";
-
-      get1.onclick = function(){
-
-        document
-          .getElementById("article")
-          .scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-          });
-
-      };
-
-    }
-
-  },1000);
-
-});
-
-
-// ==========================================
-// GET LINK #2
-// ==========================================
-
 let started2 = false;
 
-get2.addEventListener("click", function(){
+
+// =====================================================
+// START SECOND COUNTDOWN
+// =====================================================
+
+function startSecondCountdown(){
 
   if(started2) return;
 
   started2 = true;
-
-  get2.disabled = true;
-
-  get2.textContent = "Please wait...";
 
   count2.style.display = "block";
 
@@ -874,55 +1057,165 @@ get2.addEventListener("click", function(){
     seconds +
     "</b> seconds...";
 
-  const timer = setInterval(function(){
 
-    seconds--;
+  const timer =
+    setInterval(function(){
 
-    count2.innerHTML =
+      seconds--;
+
+
+      count2.innerHTML =
+        "Please wait <b>" +
+        seconds +
+        "</b> seconds...";
+
+
+      if(seconds <= 0){
+
+        clearInterval(timer);
+
+
+        count2.innerHTML =
+          "✔ Link Ready";
+
+
+        finalBox.style.display =
+          "block";
+
+
+        finalLink.href =
+          finalUrl;
+
+      }
+
+    },1000);
+
+}
+
+
+// =====================================================
+// FIRST GATE
+// =====================================================
+
+get1.addEventListener(
+  "click",
+  function(){
+
+    if(started1) return;
+
+    started1 = true;
+
+    get1.disabled = true;
+
+    get1.textContent =
+      "Please wait...";
+
+    count1.style.display =
+      "block";
+
+
+    let seconds = 10;
+
+
+    count1.innerHTML =
       "Please wait <b>" +
       seconds +
       "</b> seconds...";
 
-    if(seconds <= 0){
 
-      clearInterval(timer);
+    const timer =
+      setInterval(function(){
 
-      get2.style.display = "none";
+        seconds--;
 
-      count2.style.display = "none";
 
-      finalBox.style.display = "block";
+        count1.innerHTML =
+          "Please wait <b>" +
+          seconds +
+          "</b> seconds...";
 
-      finalLink.href = finalUrl;
 
-    }
+        if(seconds <= 0){
 
-  },1000);
+          clearInterval(timer);
 
-});
+
+          count1.innerHTML =
+            "✔ Continue";
+
+
+          get1.textContent =
+            "Continue to Article";
+
+
+          get1.disabled =
+            false;
+
+
+          // ==========================================
+          // AUTO SCROLL TO SECOND GATE
+          // ==========================================
+
+          setTimeout(function(){
+
+            secondGate.scrollIntoView({
+              behavior:"smooth",
+              block:"center"
+            });
+
+
+            // ========================================
+            // START 5 SECOND COUNTDOWN AUTOMATICALLY
+            // ========================================
+
+            setTimeout(function(){
+
+              startSecondCountdown();
+
+            },700);
+
+
+          },250);
+
+        }
+
+      },1000);
+
+  }
+);
 
 </script>
 
 </body>
 
 </html>
+
 `;
 
-        return new Response(html, {
-          status: 200,
-          headers: {
-            "Content-Type": "text/html;charset=UTF-8",
-            "Cache-Control": "no-store"
-          }
-        });
-
-      } catch (error) {
         return new Response(
-          "Server Error: " + error.message,
+          html,
           {
-            status: 500,
-            headers: {
-              "Content-Type": "text/plain;charset=UTF-8"
+            status:200,
+            headers:{
+              "Content-Type":
+                "text/html;charset=UTF-8",
+
+              "Cache-Control":
+                "no-store"
+            }
+          }
+        );
+
+      } catch(error){
+
+        return new Response(
+          "Server Error: " +
+          error.message,
+          {
+            status:500,
+            headers:{
+              "Content-Type":
+                "text/plain;charset=UTF-8"
             }
           }
         );
@@ -936,11 +1229,13 @@ get2.addEventListener("click", function(){
     return new Response(
       "MugenBD Link API is working!",
       {
-        status: 200,
-        headers: {
-          "Content-Type": "text/plain;charset=UTF-8"
+        status:200,
+        headers:{
+          "Content-Type":
+            "text/plain;charset=UTF-8"
         }
       }
     );
+
   }
 };
