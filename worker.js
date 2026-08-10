@@ -230,7 +230,7 @@ export default {
         ) {
 
           return new Response(
-            `
+`
 <!DOCTYPE html>
 
 <html lang="en">
@@ -295,10 +295,10 @@ This MugenBD link does not exist or has expired.
 </body>
 
 </html>
-            `,
+`,
             {
-              status: 404,
-              headers: {
+              status:404,
+              headers:{
                 "Content-Type":
                   "text/html;charset=UTF-8"
               }
@@ -503,7 +503,7 @@ body{
 ===================================================== */
 
 .article-text{
-  scroll-margin-top:15px;
+  scroll-margin-top:20px;
 }
 
 .article-text h2{
@@ -531,6 +531,24 @@ body{
 
 #secondGate{
   scroll-margin-top:20px;
+}
+
+/* =====================================================
+   SECOND GATE DESCRIPTION
+===================================================== */
+
+.gate-description{
+  margin-top:20px;
+  padding-top:15px;
+  border-top:1px solid #e5e7f5;
+  text-align:left;
+  color:#666;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.gate-description p{
+  margin-bottom:8px;
 }
 
 /* =====================================================
@@ -698,7 +716,7 @@ src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invo
 
 <div class="unlock-text">
 
-Click continue and wait a few seconds.
+Click Continue and wait 10 seconds.
 
 </div>
 
@@ -725,7 +743,7 @@ Please wait <b>10</b> seconds...
 
 
 <!-- =====================================================
-     ARTICLE
+     ARTICLE CONTENT
 ===================================================== -->
 
 <div
@@ -937,15 +955,29 @@ Please wait while we prepare your link.
 
 </div>
 
+<button
+  id="get2"
+  class="get-btn"
+  type="button"
+>
+
+Get Link
+
+</button>
+
 <div
   id="count2"
   class="countdown"
-  style="display:block;"
 >
 
 Please wait <b>5</b> seconds...
 
 </div>
+
+
+<!-- =====================================================
+     FINAL LINK
+===================================================== -->
 
 <div
   id="finalBox"
@@ -970,6 +1002,30 @@ Your destination link is ready.
 
 </div>
 
+
+<!-- =====================================================
+     SMALL ARTICLE DESCRIPTION
+===================================================== -->
+
+<div class="gate-description">
+
+<p>
+
+Anime offers countless stories, characters and
+adventures for every type of viewer.
+
+</p>
+
+<p>
+
+Whether you enjoy action, fantasy, comedy or
+emotional stories, there is always something
+new to discover.
+
+</p>
+
+</div>
+
 </div>
 
 </div>
@@ -983,20 +1039,24 @@ Your destination link is ready.
      POPUNDER
 ===================================================== -->
 
-<script src="https://pl28212577.effectivecpmnetwork.com/7d/8f/a5/7d8fa5de8929ad62b16aac29b2f30620.js"></script>
+<script
+src="https://pl28212577.effectivecpmnetwork.com/7d/8f/a5/7d8fa5de8929ad62b16aac29b2f30620.js">
+</script>
 
 
 <!-- =====================================================
      SOCIAL BAR
 ===================================================== -->
 
-<script src="https://pl28212586.effectivecpmnetwork.com/77/91/35/779135afb82017d428bdb26e1ba8a7f5.js"></script>
+<script
+src="https://pl28212586.effectivecpmnetwork.com/77/91/35/779135afb82017d428bdb26e1ba8a7f5.js">
+</script>
 
 
 <script>
 
 // =====================================================
-// FINAL URL FROM D1
+// FINAL URL
 // =====================================================
 
 const finalUrl =
@@ -1013,11 +1073,11 @@ const get1 =
 const count1 =
   document.getElementById("count1");
 
-const firstGate =
-  document.getElementById("firstGate");
-
 const secondGate =
   document.getElementById("secondGate");
+
+const get2 =
+  document.getElementById("get2");
 
 const count2 =
   document.getElementById("count2");
@@ -1033,24 +1093,165 @@ const finalLink =
 // STATE
 // =====================================================
 
-let started1 = false;
+let firstStarted = false;
 
-let started2 = false;
+let secondStarted = false;
 
 
 // =====================================================
-// START SECOND COUNTDOWN
+// FIRST GATE
+//
+// CLICK #1
+// → 10 SECOND COUNTDOWN
+//
+// CLICK #2 AFTER UNLOCK
+// → SCROLL TO SECOND GATE
+// =====================================================
+
+get1.addEventListener(
+  "click",
+  function(){
+
+    // =================================================
+    // FIRST CLICK
+    // =================================================
+
+    if(!firstStarted){
+
+      firstStarted = true;
+
+      get1.disabled = true;
+
+      get1.textContent =
+        "Please wait...";
+
+      count1.style.display =
+        "block";
+
+
+      let seconds = 10;
+
+
+      count1.innerHTML =
+        "Please wait <b>" +
+        seconds +
+        "</b> seconds...";
+
+
+      const timer =
+        setInterval(
+          function(){
+
+            seconds--;
+
+
+            count1.innerHTML =
+              "Please wait <b>" +
+              seconds +
+              "</b> seconds...";
+
+
+            if(seconds <= 0){
+
+              clearInterval(timer);
+
+
+              count1.innerHTML =
+                "✔ Ready";
+
+
+              get1.disabled =
+                false;
+
+
+              get1.textContent =
+                "Continue to Article";
+
+            }
+
+          },
+          1000
+        );
+
+
+      return;
+
+    }
+
+
+    // =================================================
+    // SECOND CLICK
+    //
+    // NOW SCROLL TO SECOND GATE
+    // =================================================
+
+    if(
+      firstStarted &&
+      !secondStarted &&
+      get1.textContent ===
+        "Continue to Article"
+    ){
+
+      get1.disabled =
+        true;
+
+
+      get1.textContent =
+        "Opening Article...";
+
+
+      secondGate.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+
+      // Wait for smooth scrolling
+
+      setTimeout(
+        function(){
+
+          startSecondCountdown();
+
+        },
+        900
+      );
+
+    }
+
+  }
+);
+
+
+// =====================================================
+// SECOND GATE
+//
+// AUTO 5 SECOND COUNTDOWN
+//
+// NO SECOND BUTTON CLICK
 // =====================================================
 
 function startSecondCountdown(){
 
-  if(started2) return;
+  if(secondStarted) return;
 
-  started2 = true;
+  secondStarted = true;
 
-  count2.style.display = "block";
+
+  // Hide Get Link button
+
+  get2.style.display =
+    "none";
+
+
+  // Show countdown
+
+  count2.style.display =
+    "block";
+
 
   let seconds = 5;
+
 
   count2.innerHTML =
     "Please wait <b>" +
@@ -1059,77 +1260,13 @@ function startSecondCountdown(){
 
 
   const timer =
-    setInterval(function(){
-
-      seconds--;
-
-
-      count2.innerHTML =
-        "Please wait <b>" +
-        seconds +
-        "</b> seconds...";
-
-
-      if(seconds <= 0){
-
-        clearInterval(timer);
-
-
-        count2.innerHTML =
-          "✔ Link Ready";
-
-
-        finalBox.style.display =
-          "block";
-
-
-        finalLink.href =
-          finalUrl;
-
-      }
-
-    },1000);
-
-}
-
-
-// =====================================================
-// FIRST GATE
-// =====================================================
-
-get1.addEventListener(
-  "click",
-  function(){
-
-    if(started1) return;
-
-    started1 = true;
-
-    get1.disabled = true;
-
-    get1.textContent =
-      "Please wait...";
-
-    count1.style.display =
-      "block";
-
-
-    let seconds = 10;
-
-
-    count1.innerHTML =
-      "Please wait <b>" +
-      seconds +
-      "</b> seconds...";
-
-
-    const timer =
-      setInterval(function(){
+    setInterval(
+      function(){
 
         seconds--;
 
 
-        count1.innerHTML =
+        count2.innerHTML =
           "Please wait <b>" +
           seconds +
           "</b> seconds...";
@@ -1140,51 +1277,31 @@ get1.addEventListener(
           clearInterval(timer);
 
 
-          count1.innerHTML =
-            "✔ Continue";
+          count2.innerHTML =
+            "✔ Link Ready";
 
 
-          get1.textContent =
-            "Continue to Article";
+          // Set final destination
+
+          finalLink.href =
+            finalUrl;
 
 
-          get1.disabled =
-            false;
+          // Show final button
 
-
-          // ==========================================
-          // AUTO SCROLL TO SECOND GATE
-          // ==========================================
-
-          setTimeout(function(){
-
-            secondGate.scrollIntoView({
-              behavior:"smooth",
-              block:"center"
-            });
-
-
-            // ========================================
-            // START 5 SECOND COUNTDOWN AUTOMATICALLY
-            // ========================================
-
-            setTimeout(function(){
-
-              startSecondCountdown();
-
-            },700);
-
-
-          },250);
+          finalBox.style.display =
+            "block";
 
         }
 
-      },1000);
+      },
+      1000
+    );
 
-  }
-);
+}
 
 </script>
+
 
 </body>
 
