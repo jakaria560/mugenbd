@@ -5,10 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Safelink - MugenBD</title>
 
@@ -22,22 +19,32 @@
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f4f6fb;
+  background:#f4f4f4;
   color:#222;
   line-height:1.6;
+  font-size:14px;
 }
 
+/* =====================================================
+   HEADER
+===================================================== */
+
 .header{
-  background:#4052b8;
+  background:#111;
   color:#fff;
   text-align:center;
-  padding:22px 15px;
+  padding:15px 12px;
 }
 
 .logo{
-  font-size:28px;
-  font-weight:700;
+  font-size:23px;
+  font-weight:600;
 }
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container{
   width:100%;
@@ -46,26 +53,37 @@ body{
   padding:15px;
 }
 
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
 .card{
   background:#fff;
-  margin-top:20px;
-  padding:25px 20px;
-  border-radius:14px;
-  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  margin-top:18px;
+  padding:23px 18px;
+  border-radius:12px;
+  box-shadow:0 3px 16px rgba(0,0,0,.08);
   text-align:center;
 }
 
+
+/* =====================================================
+   TITLE
+===================================================== */
+
 .title{
-  font-size:25px;
+  font-size:23px;
   font-weight:700;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
 .subtitle{
   color:#666;
-  font-size:14px;
-  margin-bottom:20px;
+  font-size:13px;
+  margin-bottom:18px;
 }
+
 
 /* =====================================================
    AD
@@ -78,7 +96,7 @@ body{
   justify-content:center;
   align-items:center;
   overflow:hidden;
-  margin:20px auto;
+  margin:18px auto;
 }
 
 .ad-inner{
@@ -88,72 +106,106 @@ body{
   overflow:hidden;
 }
 
+
 /* =====================================================
    COUNTDOWN
 ===================================================== */
 
 .countdown-box{
-  margin-top:20px;
-  padding:20px;
-  background:#f8f9ff;
-  border:1px solid #e1e5ff;
-  border-radius:12px;
+  margin-top:18px;
+  padding:17px;
+  background:#f7f7f7;
+  border:1px solid #e2e2e2;
+  border-radius:10px;
 }
 
 .count-text{
-  font-size:15px;
+  font-size:14px;
   color:#555;
 }
 
 .timer{
-  font-size:42px;
+  font-size:38px;
   font-weight:700;
-  color:#4052b8;
-  margin:8px 0;
+  color:#111;
+  margin:6px 0;
 }
 
+.message{
+  margin-top:8px;
+  color:#666;
+  font-size:12px;
+}
+
+
 /* =====================================================
-   BUTTON
+   GET BUTTON
 ===================================================== */
 
 .get-btn{
   border:none;
-  background:#4052b8;
+  background:#111;
   color:#fff;
-  font-size:18px;
+  font-size:17px;
   font-weight:700;
-  padding:13px 30px;
-  border-radius:8px;
+  padding:12px 28px;
+  border-radius:7px;
   cursor:pointer;
-  min-width:190px;
+  min-width:180px;
   transition:.2s;
 }
 
 .get-btn:hover{
-  background:#33439d;
+  background:#000;
 }
 
 .get-btn:disabled{
-  opacity:.6;
+  opacity:.55;
   cursor:not-allowed;
 }
 
+
 /* =====================================================
-   MESSAGE
+   WHAT IS SAFELINK
 ===================================================== */
 
-.message{
-  margin-top:12px;
-  color:#666;
-  font-size:13px;
+.safe-info{
+  margin-top:22px;
+  padding:16px;
+  background:#f8f8f8;
+  border:1px solid #e1e1e1;
+  border-radius:10px;
+  text-align:left;
 }
 
-.footer-text{
-  margin-top:20px;
-  color:#777;
-  font-size:13px;
-  line-height:1.7;
+.safe-info h2{
+  font-size:19px;
+  color:#111;
+  margin-bottom:7px;
 }
+
+.safe-info p{
+  color:#555;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.safe-info p:last-child{
+  margin-bottom:0;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer-text{
+  margin-top:16px;
+  color:#888;
+  font-size:11px;
+  text-align:center;
+}
+
 
 /* =====================================================
    MOBILE
@@ -162,30 +214,50 @@ body{
 @media(max-width:600px){
 
   .container{
-    padding:10px;
+    padding:9px;
   }
 
   .card{
-    padding:22px 15px;
+    padding:20px 14px;
+    margin-top:12px;
   }
 
   .logo{
-    font-size:25px;
-  }
-
-  .title{
     font-size:22px;
   }
 
+  .title{
+    font-size:21px;
+  }
+
+  .subtitle{
+    font-size:12px;
+  }
+
   .timer{
-    font-size:38px;
+    font-size:36px;
   }
 
   .get-btn{
     width:100%;
-    max-width:250px;
+    max-width:240px;
   }
 
+  .safe-info{
+    padding:14px;
+  }
+
+}
+
+
+/* =====================================================
+   PREVENT HORIZONTAL OVERFLOW
+===================================================== */
+
+html,
+body{
+  max-width:100%;
+  overflow-x:hidden;
 }
 
 </style>
@@ -286,7 +358,7 @@ body{
          GET LINK
     ================================================= -->
 
-    <div style="margin-top:20px;">
+    <div style="margin-top:18px;">
 
       <button
         id="getLink"
@@ -300,11 +372,41 @@ body{
     </div>
 
 
+    <!-- =================================================
+         WHAT IS SAFELINK
+    ================================================= -->
+
+    <section class="safe-info">
+
+      <h2>
+        🔐 What is a Safelink?
+      </h2>
+
+      <p>
+        A <strong>Safelink</strong> is a simple page that helps
+        prepare your destination link before you continue.
+      </p>
+
+      <p>
+        On MugenBD, you only need to wait for the short
+        countdown and then click <strong>Get Link</strong>
+        to continue to your requested destination.
+      </p>
+
+      <p>
+        This process also helps us keep the website running
+        and provide useful content and services to our visitors.
+      </p>
+
+      <p>
+        Thank you for visiting <strong>MugenBD ❤️</strong>
+      </p>
+
+    </section>
+
+
     <div class="footer-text">
-
-      MugenBD Safelink helps prepare your requested
-      destination link before continuing.
-
+      MugenBD Safelink • Please use the Get Link button to continue.
     </div>
 
   </div>
@@ -345,7 +447,7 @@ const getLink =
 
 let finalUrl = null;
 
-try {
+try{
 
   if(encodedUrl){
 
@@ -354,7 +456,7 @@ try {
 
   }
 
-} catch(error){
+}catch(error){
 
   finalUrl = null;
 
@@ -391,7 +493,6 @@ else{
 
   let seconds = 10;
 
-
   timer.textContent =
     seconds;
 
@@ -401,7 +502,6 @@ else{
 
       seconds--;
 
-
       timer.textContent =
         seconds;
 
@@ -410,18 +510,14 @@ else{
 
         clearInterval(countdown);
 
-
         timer.textContent =
           "✓";
-
 
         status.textContent =
           "Your link is ready.";
 
-
         getLink.disabled =
           false;
-
 
         getLink.textContent =
           "Get Link";
@@ -440,12 +536,6 @@ else{
     function(){
 
       if(!finalUrl) return;
-
-
-      /*
-       * Replace the current page with
-       * the destination URL.
-       */
 
       window.location.href =
         finalUrl;
