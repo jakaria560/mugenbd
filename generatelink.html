@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MugenBD - Generate Link</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: #4052b8;
+      color: #fff;
+      padding: 22px 18px 34px;
+    }
+
+    .brand {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 30px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-icon {
+      font-size: 34px;
+    }
+
+    .generator-area {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 42px 16px 55px;
+    }
+
+    .title {
+      text-align: center;
+      color: #fff;
+      font-size: 31px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .generator-box {
+      display: flex;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      min-height: 62px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+
+    .link-icon {
+      width: 70px;
+      background: #f93683;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 29px;
+      flex-shrink: 0;
+    }
+
+    #urlInput {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      padding: 0 18px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    #urlInput::placeholder {
+      color: #999;
+    }
+
+    #submitBtn {
+      width: 155px;
+      border: none;
+      background: #f93683;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    #submitBtn:hover {
+      background: #e92b74;
+    }
+
+    #submitBtn:active {
+      transform: scale(.98);
+    }
+
+    .result-box {
+      display: none;
+      max-width: 760px;
+      margin: 22px auto 0;
+    }
+
+    .result-row {
+      display: flex;
+      min-height: 58px;
+      border-radius: 7px;
+      overflow: hidden;
+      border: 1px solid #9bc58e;
+    }
+
+    .result-label {
+      width: 155px;
+      background: #e1f4dc;
+      color: #4b7d45;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    #shortUrl {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      background: #fff;
+      padding: 0 15px;
+      font-size: 17px;
+      color: #555;
+    }
+
+    .copy-wrap {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    #copyBtn {
+      border: none;
+      background: #4fbd57;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 6px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    #copyBtn:hover {
+      background: #43a94b;
+    }
+
+    .message {
+      display: none;
+      max-width: 760px;
+      margin: 12px auto 0;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .error {
+      background: #ffe5e5;
+      color: #b00020;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        padding: 18px 12px 28px;
+      }
+
+      .brand {
+        font-size: 27px;
+      }
+
+      .title {
+        font-size: 27px;
+      }
+
+      .generator-box {
+        min-height: 58px;
+      }
+
+      .link-icon {
+        width: 58px;
+        font-size: 24px;
+      }
+
+      #submitBtn {
+        width: 115px;
+        font-size: 17px;
+      }
+
+      #urlInput {
+        font-size: 16px;
+        padding: 0 12px;
+      }
+
+      .result-label {
+        width: 105px;
+        padding: 0 10px;
+        font-size: 15px;
+      }
+
+      #shortUrl {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="brand">
+      <span>MugenBD</span>
+      <span class="brand-icon">🔗</span>
+    </div>
+
+    <div class="generator-area">
+      <h1 class="title">🛡️ Generate Link</h1>
+
+      <div class="generator-box">
+        <div class="link-icon">🔗</div>
+
+        <input
+          id="urlInput"
+          type="url"
+          placeholder="Your Link here using http:// or https://"
+          autocomplete="off"
+        >
+
+        <button id="submitBtn" type="button">🛡️ Submit</button>
+      </div>
+
+      <div id="message" class="message error"></div>
+
+      <div id="resultBox" class="result-box">
+        <div class="result-row">
+          <div class="result-label">Result: ✔</div>
+
+          <input id="shortUrl" type="text" readonly>
+        </div>
+
+        <div class="copy-wrap">
+          <button id="copyBtn" type="button">▣ Copy URL</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    const urlInput = document.getElementById("urlInput");
+    const submitBtn = document.getElementById("submitBtn");
+    const resultBox = document.getElementById("resultBox");
+    const shortUrl = document.getElementById("shortUrl");
+    const copyBtn = document.getElementById("copyBtn");
+    const message = document.getElementById("message");
+
+    function generateSlug(length = 7) {
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let slug = "";
+
+      for (let i = 0; i < length; i++) {
+        slug += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      return slug;
+    }
+
+    function showError(text) {
+      message.textContent = text;
+      message.style.display = "block";
+      resultBox.style.display = "none";
+    }
+
+    submitBtn.addEventListener("click", function () {
+      const originalUrl = urlInput.value.trim();
+
+      if (!originalUrl) {
+        showError("Please enter a URL.");
+        return;
+      }
+
+      try {
+        const parsedUrl = new URL(originalUrl);
+
+        if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
+          showError("Please enter a valid HTTP or HTTPS URL.");
+          return;
+        }
+      } catch (error) {
+        showError("Please enter a valid URL.");
+        return;
+      }
+
+      message.style.display = "none";
+
+      const slug = generateSlug();
+      const baseUrl = window.location.origin;
+      const generatedUrl = baseUrl + "/article-" + slug;
+
+      shortUrl.value = generatedUrl;
+      resultBox.style.display = "block";
+    });
+
+    copyBtn.addEventListener("click", async function () {
+      try {
+        await navigator.clipboard.writeText(shortUrl.value);
+        copyBtn.textContent = "✔ Copied!";
+
+        setTimeout(() => {
+          copyBtn.textContent = "▣ Copy URL";
+        }, 1800);
+      } catch (error) {
+        shortUrl.select();
+        document.execCommand("copy");
+        copyBtn.textContent = "✔ Copied!";
+
+        setTimeout(() => {
+          copyBtn.textContent = "▣ Copy URL";
+        }, 1800);
+      }
+    });
+  </script>
+
+</body>
+</html>
