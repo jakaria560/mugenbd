@@ -4,12 +4,15 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sub4Unlock Link Generator - MugenBD</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
 
 *{
   box-sizing:border-box;
@@ -21,38 +24,38 @@ html,
 body{
   width:100%;
   min-height:100%;
-  overflow-x:hidden;
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f3f5f8;
+  background:#f1f3f6;
   color:#333;
-  line-height:1.6;
+  line-height:1.5;
 }
 
 
 /* =====================================================
-   MAIN CONTAINER
+   MAIN
 ===================================================== */
 
 .container{
   width:100%;
-  max-width:720px;
+  max-width:700px;
   margin:0 auto;
-  padding:35px 15px;
+  padding:24px 12px;
 }
 
 
 /* =====================================================
-   GENERATOR CARD
+   CARD
 ===================================================== */
 
 .generator-card{
+  width:100%;
   background:#fff;
-  border-radius:24px;
-  padding:55px 36px 40px;
-  box-shadow:0 8px 35px rgba(0,0,0,.08);
+  border-radius:22px;
+  padding:34px 36px 32px;
+  box-shadow:0 5px 25px rgba(0,0,0,.06);
 }
 
 
@@ -63,27 +66,28 @@ body{
 .title{
   text-align:center;
   color:#173f6b;
-  font-size:38px;
+  font-size:32px;
   font-weight:700;
-  margin-bottom:48px;
   line-height:1.25;
+  margin-bottom:38px;
 }
 
 
 /* =====================================================
-   FORM GROUP
+   FORM
 ===================================================== */
 
 .form-group{
-  margin-bottom:32px;
+  margin-bottom:27px;
 }
 
 .form-label{
   display:block;
-  font-size:24px;
-  font-weight:700;
-  margin-bottom:14px;
   color:#333;
+  font-size:21px;
+  font-weight:700;
+  line-height:1.35;
+  margin-bottom:11px;
 }
 
 
@@ -92,16 +96,24 @@ body{
 ===================================================== */
 
 .form-input{
+  display:block;
   width:100%;
-  height:90px;
-  border:1px solid #cfd5da;
-  border-radius:18px;
-  padding:0 28px;
-  font-size:23px;
-  color:#444;
-  outline:none;
+  height:72px;
+
+  border:1px solid #cfd4d9;
+  border-radius:15px;
+
   background:#fff;
-  transition:.2s;
+  color:#444;
+
+  padding:0 22px;
+
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:18px;
+
+  outline:none;
+
+  transition:border-color .2s,box-shadow .2s;
 }
 
 .form-input::placeholder{
@@ -109,8 +121,8 @@ body{
 }
 
 .form-input:focus{
-  border-color:#3b82f6;
-  box-shadow:0 0 0 3px rgba(59,130,246,.08);
+  border-color:#4385d9;
+  box-shadow:0 0 0 2px rgba(67,133,217,.08);
 }
 
 
@@ -119,98 +131,34 @@ body{
 ===================================================== */
 
 .generate-btn{
+  display:block;
   width:100%;
-  height:100px;
-  border:none;
-  border-radius:18px;
+  height:78px;
+
+  border:0;
+  border-radius:15px;
+
   background:linear-gradient(
     90deg,
-    #4d3be8,
-    #3489ed
+    #4b3be6,
+    #3487eb
   );
-  color:#fff;
-  font-size:26px;
-  font-weight:700;
-  cursor:pointer;
-  margin-top:2px;
-  box-shadow:0 8px 22px rgba(52,137,237,.18);
-  transition:.2s;
-}
 
-.generate-btn:hover{
-  transform:translateY(-1px);
+  color:#fff;
+
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:22px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  box-shadow:0 5px 16px rgba(52,135,235,.15);
+
+  transition:transform .15s;
 }
 
 .generate-btn:active{
   transform:scale(.99);
-}
-
-
-/* =====================================================
-   GENERATED LINK BOX
-===================================================== */
-
-.result-box{
-  display:none;
-  margin-top:35px;
-  padding:28px;
-  border:2px dashed #1688b6;
-  border-radius:18px;
-  background:#e3f4ff;
-}
-
-.result-title{
-  color:#08729c;
-  font-size:27px;
-  font-weight:700;
-  margin-bottom:20px;
-}
-
-
-/* =====================================================
-   GENERATED LINK TEXTAREA
-===================================================== */
-
-.generated-link{
-  width:100%;
-  min-height:190px;
-  resize:none;
-  border:1px solid #c5e0ee;
-  border-radius:13px;
-  background:#fff;
-  padding:18px 20px;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:18px;
-  line-height:1.55;
-  color:#394b59;
-  outline:none;
-  word-break:break-all;
-}
-
-
-/* =====================================================
-   COPY BUTTON
-===================================================== */
-
-.copy-btn{
-  margin-top:18px;
-  border:none;
-  background:#0788c7;
-  color:#fff;
-  font-size:20px;
-  font-weight:700;
-  padding:15px 32px;
-  border-radius:12px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.copy-btn:hover{
-  background:#0574a9;
-}
-
-.copy-btn.copied{
-  background:#168a52;
 }
 
 
@@ -220,13 +168,110 @@ body{
 
 .error{
   display:none;
-  margin-top:15px;
-  padding:12px 15px;
-  background:#ffe9e9;
+
+  margin-top:14px;
+  padding:10px 13px;
+
   border:1px solid #ffbcbc;
-  border-radius:10px;
+  border-radius:9px;
+
+  background:#ffeaea;
+
   color:#c62828;
+
   font-size:14px;
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.result-box{
+  display:none;
+
+  margin-top:28px;
+  padding:22px;
+
+  border:1.5px dashed #1688b6;
+  border-radius:16px;
+
+  background:#e3f4ff;
+}
+
+.result-title{
+  color:#08729c;
+
+  font-size:24px;
+  font-weight:700;
+
+  margin-bottom:16px;
+}
+
+
+/* =====================================================
+   GENERATED LINK
+===================================================== */
+
+.generated-link{
+  display:block;
+
+  width:100%;
+  min-height:170px;
+
+  resize:none;
+
+  border:1px solid #c6e0ed;
+  border-radius:11px;
+
+  background:#fff;
+
+  padding:15px 16px;
+
+  color:#394b59;
+
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  line-height:1.5;
+
+  outline:none;
+
+  overflow-wrap:anywhere;
+  word-break:break-all;
+}
+
+
+/* =====================================================
+   COPY
+===================================================== */
+
+.copy-btn{
+  display:inline-block;
+
+  margin-top:16px;
+
+  border:0;
+  border-radius:11px;
+
+  background:#0788c7;
+
+  color:#fff;
+
+  padding:13px 28px;
+
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:18px;
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+.copy-btn:active{
+  transform:scale(.98);
+}
+
+.copy-btn.copied{
+  background:#168a52;
 }
 
 
@@ -237,75 +282,85 @@ body{
 @media(max-width:600px){
 
   .container{
-    padding:25px 12px;
+    padding:18px 10px;
   }
 
   .generator-card{
-    border-radius:22px;
-    padding:35px 24px 30px;
+    border-radius:20px;
+    padding:30px 24px 28px;
   }
 
   .title{
-    font-size:31px;
-    margin-bottom:40px;
+    font-size:29px;
+    margin-bottom:34px;
   }
 
   .form-group{
-    margin-bottom:27px;
+    margin-bottom:25px;
   }
 
   .form-label{
-    font-size:20px;
-    margin-bottom:12px;
+    font-size:19px;
+    margin-bottom:10px;
   }
 
   .form-input{
-    height:75px;
-    border-radius:15px;
-    padding:0 22px;
-    font-size:18px;
+    height:70px;
+    padding:0 20px;
+    border-radius:14px;
+    font-size:17px;
   }
 
   .generate-btn{
-    height:82px;
-    border-radius:15px;
+    height:74px;
+    border-radius:14px;
     font-size:21px;
   }
 
   .result-box{
-    padding:22px;
-    margin-top:28px;
+    margin-top:26px;
+    padding:20px;
+    border-radius:15px;
   }
 
   .result-title{
-    font-size:23px;
+    font-size:22px;
+    margin-bottom:15px;
   }
 
   .generated-link{
-    min-height:180px;
-    font-size:16px;
+    min-height:165px;
+    padding:14px;
+    font-size:15.5px;
   }
 
   .copy-btn{
-    width:100%;
-    font-size:18px;
+    width:auto;
+    padding:12px 25px;
+    font-size:17px;
   }
 
 }
 
 
 /* =====================================================
-   SMALL PHONES
+   SMALL MOBILE
 ===================================================== */
 
 @media(max-width:380px){
 
+  .container{
+    padding:15px 8px;
+  }
+
   .generator-card{
-    padding:30px 18px 25px;
+    padding:27px 19px 25px;
+    border-radius:18px;
   }
 
   .title{
-    font-size:27px;
+    font-size:26px;
+    margin-bottom:31px;
   }
 
   .form-label{
@@ -313,7 +368,18 @@ body{
   }
 
   .form-input{
+    height:67px;
     font-size:16px;
+    padding:0 17px;
+  }
+
+  .generate-btn{
+    height:70px;
+    font-size:20px;
+  }
+
+  .result-box{
+    padding:17px;
   }
 
 }
@@ -326,23 +392,17 @@ body{
 <body>
 
 
-<main class="container">
+<div class="container">
 
   <div class="generator-card">
 
-
-    <!-- =================================================
-         TITLE
-    ================================================= -->
 
     <h1 class="title">
       Sub4Unlock Link Generator
     </h1>
 
 
-    <!-- =================================================
-         YOUTUBE
-    ================================================= -->
+    <!-- YouTube -->
 
     <div class="form-group">
 
@@ -364,9 +424,7 @@ body{
     </div>
 
 
-    <!-- =================================================
-         TELEGRAM
-    ================================================= -->
+    <!-- Telegram -->
 
     <div class="form-group">
 
@@ -388,9 +446,7 @@ body{
     </div>
 
 
-    <!-- =================================================
-         DESTINATION
-    ================================================= -->
+    <!-- Destination -->
 
     <div class="form-group">
 
@@ -412,9 +468,7 @@ body{
     </div>
 
 
-    <!-- =================================================
-         GENERATE BUTTON
-    ================================================= -->
+    <!-- Generate -->
 
     <button
       id="generateBtn"
@@ -425,9 +479,7 @@ body{
     </button>
 
 
-    <!-- =================================================
-         ERROR
-    ================================================= -->
+    <!-- Error -->
 
     <div
       id="error"
@@ -435,9 +487,7 @@ body{
     ></div>
 
 
-    <!-- =================================================
-         RESULT
-    ================================================= -->
+    <!-- Result -->
 
     <div
       id="resultBox"
@@ -467,7 +517,7 @@ body{
 
   </div>
 
-</main>
+</div>
 
 
 <script>
@@ -502,34 +552,26 @@ const errorBox =
 
 
 /* =====================================================
-   SHOW ERROR
+   ERROR
 ===================================================== */
 
 function showError(message){
 
-  errorBox.textContent =
-    message;
+  errorBox.textContent = message;
 
-  errorBox.style.display =
-    "block";
+  errorBox.style.display = "block";
 
 }
-
-
-/* =====================================================
-   HIDE ERROR
-===================================================== */
 
 function hideError(){
 
-  errorBox.style.display =
-    "none";
+  errorBox.style.display = "none";
 
 }
 
 
 /* =====================================================
-   BASE64 UTF-8 ENCODE
+   ENCODE
 ===================================================== */
 
 function encodeData(data){
@@ -544,7 +586,8 @@ function encodeData(data){
 
   bytes.forEach(function(byte){
 
-    binary += String.fromCharCode(byte);
+    binary +=
+      String.fromCharCode(byte);
 
   });
 
@@ -554,7 +597,7 @@ function encodeData(data){
 
 
 /* =====================================================
-   GENERATE LINK
+   GENERATE
 ===================================================== */
 
 generateBtn.addEventListener(
@@ -574,9 +617,7 @@ generateBtn.addEventListener(
       destinationInput.value.trim();
 
 
-    /* ================================================
-       VALIDATION
-    ================================================ */
+    /* Required */
 
     if(!youtube){
 
@@ -617,9 +658,7 @@ generateBtn.addEventListener(
     }
 
 
-    /* ================================================
-       URL VALIDATION
-    ================================================ */
+    /* Validate URLs */
 
     try{
 
@@ -672,32 +711,26 @@ generateBtn.addEventListener(
     }
 
 
-    /* ================================================
-       DATA
-    ================================================ */
+    /* Data */
 
     const data = {
 
-      youtube: youtube,
+      youtube:youtube,
 
-      telegram: telegram,
+      telegram:telegram,
 
-      destination: destination
+      destination:destination
 
     };
 
 
-    /* ================================================
-       ENCODE DATA
-    ================================================ */
+    /* Encode */
 
     const encodedData =
       encodeData(data);
 
 
-    /* ================================================
-       FINAL LINK
-    ================================================ */
+    /* Visitor URL */
 
     const baseUrl =
       window.location.origin +
@@ -707,12 +740,12 @@ generateBtn.addEventListener(
     const finalLink =
       baseUrl +
       "?data=" +
-      encodeURIComponent(encodedData);
+      encodeURIComponent(
+        encodedData
+      );
 
 
-    /* ================================================
-       SHOW RESULT
-    ================================================ */
+    /* Show */
 
     generatedLink.value =
       finalLink;
@@ -721,9 +754,7 @@ generateBtn.addEventListener(
       "block";
 
 
-    /* ================================================
-       SCROLL TO RESULT
-    ================================================ */
+    /* Scroll */
 
     setTimeout(function(){
 
@@ -739,7 +770,7 @@ generateBtn.addEventListener(
 
 
 /* =====================================================
-   COPY LINK
+   COPY
 ===================================================== */
 
 copyBtn.addEventListener(
@@ -754,7 +785,9 @@ copyBtn.addEventListener(
 
     try{
 
-      await navigator.clipboard.writeText(link);
+      await navigator.clipboard.writeText(
+        link
+      );
 
       copyBtn.textContent =
         "✓ Link Copied!";
@@ -804,4 +837,4 @@ copyBtn.addEventListener(
 
 </body>
 
-  </html>
+</html>
