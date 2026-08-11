@@ -4,18 +4,30 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="MugenBD - Anime, MUGEN and fan-made fighting games.">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+  name="description"
+  content="MugenBD - Anime, MUGEN and fan-made fighting games for Android gaming fans."
+>
+
+<meta
+  name="theme-color"
+  content="#0b0b0f"
+>
 
 <title>MugenBD - Anime & MUGEN Games</title>
 
+
 <style>
 
-/* =========================
+/* =====================================================
    RESET
-========================= */
+===================================================== */
 
 *{
   box-sizing:border-box;
@@ -28,53 +40,72 @@ html{
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  width:100%;
+  min-height:100vh;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
   background:#0b0b0f;
+
   color:#e8e8eb;
 
   line-height:1.5;
 }
 
 
-/* =========================
+/* =====================================================
    CONTAINER
-========================= */
+===================================================== */
 
 .container{
   width:100%;
   max-width:1050px;
 
-  margin:auto;
+  margin:0 auto;
 
-  padding:0 15px;
+  padding-left:15px;
+  padding-right:15px;
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .header{
-  border-bottom:1px solid #202027;
+  width:100%;
 
   background:#0b0b0f;
+
+  border-bottom:
+    1px solid #202027;
 }
 
 .header-inner{
-  min-height:68px;
+
+  min-height:65px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 }
 
+
+/* LOGO */
+
 .logo{
+
+  color:#ffffff;
+
   text-decoration:none;
 
-  color:#fff;
+  font-size:23px;
 
-  font-size:24px;
   font-weight:800;
 
   letter-spacing:.3px;
@@ -84,44 +115,61 @@ body{
   color:#9b6cff;
 }
 
+
+/* NAV */
+
 .nav{
+
   display:flex;
-  gap:22px;
+
+  align-items:center;
+
+  gap:20px;
 }
 
 .nav a{
+
+  color:#9999a4;
+
   text-decoration:none;
 
-  color:#a9a9b2;
+  font-size:13px;
 
-  font-size:14px;
   font-weight:600;
 
-  transition:.2s;
+  transition:
+    color .2s ease;
 }
 
 .nav a:hover{
-  color:#fff;
+  color:#ffffff;
 }
 
 
-/* =========================
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
-  padding:55px 0 35px;
 
   text-align:center;
+
+  padding:
+    46px 0
+    28px;
 }
 
 .hero h1{
+
+  color:#ffffff;
+
   font-size:34px;
+
+  font-weight:800;
+
   line-height:1.2;
 
-  margin-bottom:10px;
-
-  color:#fff;
+  margin-bottom:9px;
 }
 
 .hero h1 span{
@@ -129,88 +177,110 @@ body{
 }
 
 .hero p{
-  max-width:560px;
 
-  margin:auto;
+  max-width:570px;
+
+  margin:0 auto;
 
   color:#9999a4;
 
-  font-size:15px;
+  font-size:14px;
+
+  line-height:1.6;
 }
 
 
-/* =========================
-   FEATURED
-========================= */
+/* =====================================================
+   SECTION
+===================================================== */
 
 .section{
-  padding:22px 0 35px;
+
+  width:100%;
+
+  padding:
+    18px 0
+    30px;
 }
 
 .section-title{
-  margin-bottom:17px;
+
+  color:#ffffff;
 
   font-size:20px;
+
   font-weight:700;
 
-  color:#fff;
+  margin-bottom:16px;
 }
 
+
+/* =====================================================
+   FEATURED CARD
+===================================================== */
+
 .featured{
-  background:#121218;
 
-  border:1px solid #22222b;
-
-  border-radius:17px;
-
-  padding:20px;
+  width:100%;
 
   display:flex;
+
   align-items:center;
+
   gap:20px;
 
-  transition:.2s;
+  padding:19px;
+
+  background:#121218;
+
+  border:
+    1px solid #22222b;
+
+  border-radius:16px;
+
+  transition:
+    border-color .2s ease;
 }
 
 .featured:hover{
-  border-color:#383044;
+  border-color:#3a304b;
 }
 
+
+/* FEATURED IMAGE */
+
 .featured-image{
+
   width:230px;
+
   height:135px;
 
   flex-shrink:0;
 
-  border-radius:12px;
+  display:block;
 
-  background:
-    linear-gradient(
-      135deg,
-      #251b3c,
-      #15151d
-    );
+  object-fit:cover;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  border-radius:11px;
 
-  color:#8060bb;
-
-  font-size:13px;
-  font-weight:600;
+  background:#15151d;
 }
+
+
+/* FEATURED CONTENT */
 
 .featured-content{
   flex:1;
 }
 
 .featured-label{
+
   display:inline-block;
 
-  margin-bottom:8px;
+  padding:
+    4px 9px;
 
-  padding:4px 9px;
+  margin-bottom:7px;
 
   border-radius:20px;
 
@@ -218,55 +288,75 @@ body{
 
   color:#b18cff;
 
-  font-size:11px;
+  font-size:10px;
+
   font-weight:700;
 }
 
 .featured h3{
-  font-size:21px;
 
-  margin-bottom:7px;
+  color:#ffffff;
 
-  color:#fff;
+  font-size:20px;
+
+  line-height:1.3;
+
+  margin-bottom:6px;
 }
 
 .featured p{
-  color:#9999a4;
 
-  font-size:13px;
+  color:#9696a0;
 
-  margin-bottom:14px;
+  font-size:12.5px;
+
+  margin-bottom:13px;
 }
 
+
+/* =====================================================
+   GENERAL BUTTON
+===================================================== */
+
 .btn{
+
   display:inline-block;
 
-  padding:9px 17px;
+  padding:
+    8px 15px;
 
-  border-radius:9px;
+  border-radius:8px;
 
   background:#8b5cf6;
 
-  color:#fff;
+  color:#ffffff;
 
   text-decoration:none;
 
-  font-size:13px;
+  font-size:12px;
+
   font-weight:700;
 
-  transition:.2s;
+  transition:
+    background .2s ease,
+    transform .15s ease;
 }
 
 .btn:hover{
   background:#9b70ff;
 }
 
+.btn:active{
+  transform:scale(.98);
+}
 
-/* =========================
-   GAMES GRID
-========================= */
+
+/* =====================================================
+   GAME GRID
+===================================================== */
 
 .games-grid{
+
   display:grid;
 
   grid-template-columns:
@@ -275,149 +365,271 @@ body{
   gap:13px;
 }
 
+
+/* =====================================================
+   GAME CARD
+===================================================== */
+
 .game-card{
+
+  min-width:0;
+
+  padding:10px;
+
   background:#121218;
 
-  border:1px solid #22222b;
+  border:
+    1px solid #22222b;
 
-  border-radius:14px;
-
-  padding:11px;
+  border-radius:13px;
 
   transition:
-    transform .2s,
-    border-color .2s;
+    transform .2s ease,
+    border-color .2s ease;
 }
 
 .game-card:hover{
-  transform:translateY(-3px);
 
-  border-color:#3b304d;
+  transform:
+    translateY(-3px);
+
+  border-color:#3a304b;
 }
 
+
+/* =====================================================
+   GAME IMAGE
+===================================================== */
+
 .game-image{
+
+  display:block;
+
   width:100%;
-  height:115px;
+
+  height:145px;
+
+  object-fit:cover;
 
   border-radius:9px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #211832,
-      #15151b
-    );
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:#8060bb;
-
-  font-size:11px;
+  background:#15151b;
 }
 
+
+/* =====================================================
+   GAME TITLE
+===================================================== */
+
 .game-card h3{
-  margin-top:10px;
 
-  font-size:14px;
+  margin-top:9px;
 
-  color:#eee;
+  color:#eeeeee;
+
+  font-size:13.5px;
+
+  font-weight:700;
 
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
 .game-card p{
-  margin-top:3px;
+
+  margin-top:2px;
 
   color:#858590;
 
-  font-size:11px;
+  font-size:10.5px;
 }
 
 
-/* =========================
+/* =====================================================
+   GAME BUTTON
+===================================================== */
+
+.game-btn{
+
+  display:block;
+
+  width:100%;
+
+  margin-top:9px;
+
+  padding:
+    7px 8px;
+
+  border-radius:7px;
+
+  border:
+    1px solid #332d40;
+
+  background:#24202e;
+
+  color:#c5aaff;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  font-size:10.5px;
+
+  font-weight:700;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+.game-btn:hover{
+
+  background:#8b5cf6;
+
+  border-color:#8b5cf6;
+
+  color:#ffffff;
+}
+
+
+/* =====================================================
    ABOUT
-========================= */
+===================================================== */
 
 .about{
-  text-align:center;
 
   max-width:650px;
 
-  margin:auto;
+  margin:0 auto;
 
-  padding:12px 0 25px;
+  text-align:center;
+
+  padding:
+    3px 0
+    22px;
 }
 
 .about p{
-  color:#94949e;
 
-  font-size:13px;
+  color:#92929d;
+
+  font-size:12.5px;
+
+  line-height:1.7;
 }
 
+
+/* =====================================================
+   SOCIAL
+===================================================== */
+
 .social{
-  margin-top:15px;
 
   display:flex;
 
   justify-content:center;
 
-  gap:9px;
+  gap:8px;
+
+  margin-top:14px;
 }
 
 .social a{
-  text-decoration:none;
 
-  color:#ddd;
+  display:inline-block;
 
-  border:1px solid #2a2a32;
+  padding:
+    7px 13px;
 
-  background:#121218;
-
-  padding:7px 13px;
+  border:
+    1px solid #2a2a32;
 
   border-radius:8px;
 
-  font-size:12px;
+  background:#121218;
 
-  transition:.2s;
+  color:#dddddf;
+
+  text-decoration:none;
+
+  font-size:11px;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
 }
 
 .social a:hover{
+
   background:#1b1b24;
+
+  border-color:#3a3a45;
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 .footer{
-  border-top:1px solid #202027;
 
-  padding:20px 0;
+  border-top:
+    1px solid #202027;
+
+  padding:
+    18px 0;
 
   text-align:center;
 }
 
 .footer p{
+
   color:#70707a;
 
-  font-size:11px;
+  font-size:10.5px;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* =====================================================
+   TABLET
+===================================================== */
 
-@media(max-width:700px){
+@media(max-width:850px){
+
+  .games-grid{
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .game-image{
+    height:155px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+  .container{
+
+    padding-left:11px;
+    padding-right:11px;
+  }
+
+
+  /* HEADER */
 
   .header-inner{
-    min-height:60px;
+    min-height:59px;
   }
 
   .logo{
@@ -429,46 +641,157 @@ body{
   }
 
   .nav a{
-    font-size:12px;
+    font-size:11.5px;
   }
 
+
+  /* HERO */
+
   .hero{
-    padding:38px 0 25px;
+
+    padding:
+      36px 0
+      23px;
   }
 
   .hero h1{
-    font-size:28px;
+    font-size:27px;
   }
 
   .hero p{
-    font-size:13px;
+    font-size:12.5px;
   }
 
+
+  /* FEATURED */
+
   .featured{
+
     padding:15px;
 
     gap:14px;
   }
 
   .featured-image{
+
     width:125px;
+
     height:100px;
   }
 
   .featured h3{
-    font-size:17px;
+    font-size:16px;
   }
 
   .featured p{
-    font-size:12px;
+    font-size:11.5px;
   }
 
+  .btn{
+    font-size:11px;
+    padding:7px 12px;
+  }
+
+
+  /* GRID */
+
   .games-grid{
+
     grid-template-columns:
       repeat(2,1fr);
 
     gap:10px;
   }
+
+
+  /* CARD */
+
+  .game-card{
+
+    padding:8px;
+
+    border-radius:11px;
+  }
+
+  .game-image{
+    height:115px;
+  }
+
+  .game-card h3{
+    font-size:12.5px;
+  }
+
+  .game-card p{
+    font-size:9.5px;
+  }
+
+  .game-btn{
+
+    margin-top:8px;
+
+    padding:
+      6px 5px;
+
+    font-size:9.5px;
+  }
+
+
+  /* SECTION */
+
+  .section{
+    padding:
+      15px 0
+      26px;
+  }
+
+  .section-title{
+    font-size:18px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:400px){
+
+  .nav{
+    gap:9px;
+  }
+
+  .nav a{
+    font-size:10.5px;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
+
+  /* FEATURED STACK */
+
+  .featured{
+
+    display:block;
+  }
+
+  .featured-image{
+
+    width:100%;
+
+    height:145px;
+
+    margin-bottom:12px;
+  }
+
+  .featured h3{
+    font-size:16px;
+  }
+
+
+  /* GAME IMAGE */
 
   .game-image{
     height:105px;
@@ -477,49 +800,30 @@ body{
 }
 
 
-/* =========================
-   SMALL MOBILE
-========================= */
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
 
-@media(max-width:400px){
+@media(max-width:340px){
 
-  .container{
-    padding:0 10px;
+  .logo{
+    font-size:19px;
   }
 
   .nav{
-    gap:9px;
+    gap:7px;
   }
 
   .nav a{
-    font-size:11px;
-  }
-
-  .hero h1{
-    font-size:25px;
-  }
-
-  .featured{
-    display:block;
-  }
-
-  .featured-image{
-    width:100%;
-    height:145px;
-
-    margin-bottom:13px;
-  }
-
-  .featured h3{
-    font-size:16px;
-  }
-
-  .section-title{
-    font-size:18px;
+    font-size:9.5px;
   }
 
   .game-image{
     height:95px;
+  }
+
+  .game-card h3{
+    font-size:11.5px;
   }
 
 }
@@ -532,15 +836,16 @@ body{
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header class="header">
 
   <div class="container">
 
     <div class="header-inner">
+
 
       <a
         href="/"
@@ -566,6 +871,7 @@ body{
 
       </nav>
 
+
     </div>
 
   </div>
@@ -574,9 +880,9 @@ body{
 
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero">
 
@@ -597,13 +903,14 @@ body{
 
 
 
-<!-- =========================
-     FEATURED POST
-========================= -->
+<!-- =====================================================
+     FEATURED
+===================================================== -->
 
 <section class="section">
 
   <div class="container">
+
 
     <h2 class="section-title">
       Featured
@@ -613,36 +920,48 @@ body{
     <div class="featured">
 
 
-      <div class="featured-image">
-        Featured Game Image
-      </div>
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFnCQX37tsU4uaiBrJqFJus_xGQ1pZ3q8YgQFXrpKz1COzpaOsyfFwI0xt07wLKvrVqY_WaZPPL1wHKoYDGHUHfCcCH4CegTuMyiwjjFlJtEGvzK3iy24PF-omzOq5uZ5CNrFeVjrmPOnnPea3E15H3cbnm2-8jALTJmIxTpjB1ZWk8A2YahIATPLnMxg/s320/1001121748.jpg"
+        alt="Anime Crossover"
+        class="featured-image"
+        loading="eager"
+      >
 
 
       <div class="featured-content">
 
+
         <span class="featured-label">
-          FEATURED GAME
+          FEATURED
         </span>
 
+
         <h3>
-          Your Featured Game
+          Anime Crossover
         </h3>
 
+
         <p>
-          Add your latest MUGEN or anime
-          fighting game here.
+          Explore anime crossover MUGEN games,
+          characters, updates and gameplay.
         </p>
 
+
         <a
-          href="#"
+          href="https://youtube.com/playlist?list=PLM_Yvp_Sm4JOjghbJoeI1aiZwHjrNcCQW&si=z8zPcZUFr64902D7"
+          target="_blank"
+          rel="noopener noreferrer"
           class="btn"
         >
-          View Post →
+          View Playlist →
         </a>
+
 
       </div>
 
+
     </div>
+
 
   </div>
 
@@ -650,9 +969,9 @@ body{
 
 
 
-<!-- =========================
+<!-- =====================================================
      GAMES
-========================= -->
+===================================================== -->
 
 <section
   class="section"
@@ -660,6 +979,7 @@ body{
 >
 
   <div class="container">
+
 
     <h2 class="section-title">
       Featured Games
@@ -669,73 +989,157 @@ body{
     <div class="games-grid">
 
 
+      <!-- ================================================
+           ANIME CROSSOVER
+      ================================================= -->
+
       <article class="game-card">
 
-        <div class="game-image">
-          Game Image
-        </div>
+
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFnCQX37tsU4uaiBrJqFJus_xGQ1pZ3q8YgQFXrpKz1COzpaOsyfFwI0xt07wLKvrVqY_WaZPPL1wHKoYDGHUHfCcCH4CegTuMyiwjjFlJtEGvzK3iy24PF-omzOq5uZ5CNrFeVjrmPOnnPea3E15H3cbnm2-8jALTJmIxTpjB1ZWk8A2YahIATPLnMxg/s320/1001121748.jpg"
+          alt="Anime Crossover"
+          class="game-image"
+          loading="lazy"
+        >
+
 
         <h3>
           Anime Crossover
         </h3>
 
+
         <p>
           Android • MUGEN
         </p>
 
+
+        <a
+          href="https://youtube.com/playlist?list=PLM_Yvp_Sm4JOjghbJoeI1aiZwHjrNcCQW&si=z8zPcZUFr64902D7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="game-btn"
+        >
+          View Playlist →
+        </a>
+
+
       </article>
 
 
 
+      <!-- ================================================
+           DRAGON BALL Z
+      ================================================= -->
+
       <article class="game-card">
 
-        <div class="game-image">
-          Game Image
-        </div>
+
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlSHkMfcyrg9eByIQ9mhIJrEqIG0sOuewFNU0uz8d9-QWyhDxakA25riCy25a6dvn86ti3AnEon75Hpmz1sELMuhPMZtzvqn_VyXpShaI-eNxYGZat-RNdNyMIcBFRWIvHOXSxtF2Ik50pXIKj2bVpnBzT45W-gE51TiUI2o4p5Ffpm1mCLl-BLbgXhH0/s320/1001121749.jpg"
+          alt="Dragon Ball Z"
+          class="game-image"
+          loading="lazy"
+        >
+
 
         <h3>
-          Dragon Ball MUGEN
+          Dragon Ball Z
         </h3>
 
+
         <p>
-          Android • Fighting
+          Android • MUGEN
         </p>
+
+
+        <a
+          href="https://youtube.com/playlist?list=PLM_Yvp_Sm4JNVJc8NqEVZ6RFJgTrJTXQP&si=PaEIU54d-paio1GA"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="game-btn"
+        >
+          View Playlist →
+        </a>
+
 
       </article>
 
 
 
+      <!-- ================================================
+           NARUTO
+      ================================================= -->
+
       <article class="game-card">
 
-        <div class="game-image">
-          Game Image
-        </div>
+
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwCslpljNW5p7M4nayOXg73IHiqJM5IPBEWf3qtnA_ky732M2lYm7noPugTsFskY-c8O427OiT1QtjuSHisOAo2W9QWGhmwx-ADjDlL1SqD2r2UadoZ2vjG7xXIjz53FiLg-Ch-jQYJxBG8rXSIa4JZgmCnrkL2hgM7YeXBnqKQ6If3LniBprKfeFOubg/s320/1001121750.jpg"
+          alt="Naruto MUGEN"
+          class="game-image"
+          loading="lazy"
+        >
+
 
         <h3>
           Naruto MUGEN
         </h3>
 
+
         <p>
           Android • Offline
         </p>
+
+
+        <a
+          href="https://youtube.com/playlist?list=PLM_Yvp_Sm4JOT-Ikmd--SqsYyBhFekqrQ&si=Y9KXuP6Ds9Urfd2f"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="game-btn"
+        >
+          View Playlist →
+        </a>
+
 
       </article>
 
 
 
+      <!-- ================================================
+           ANIME FIGHTING GAME
+      ================================================= -->
+
       <article class="game-card">
 
-        <div class="game-image">
-          Game Image
-        </div>
+
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjB4neTnZp00RvEnNfIt8-iq0KBKZWcoag0CVXZKV4TqIQ6hKxOH_5DDNRoSQSbHQpwYBs2tb59KNc_T-J4FFkF6HVhsKDyW-7ACvj-nuv1L5bfkjvGl7YUxDAPaJSwBorLYRBA66SYZFoEzTPQ3RikAiA04uTZF6LNFpuNY_FqqbEPhi1ZcGqYyQWIuTQ/s320/1001121751.jpg"
+          alt="Anime Fighting Game"
+          class="game-image"
+          loading="lazy"
+        >
+
 
         <h3>
           Anime Fighting Game
         </h3>
 
+
         <p>
-          Android • MUGEN
+          Android • Fighting
         </p>
+
+
+        <a
+          href="https://youtube.com/playlist?list=PLM_Yvp_Sm4JN023wcBduBJkwZpeZ8Uhwy&si=jRQXuYH3Faq0zZmB"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="game-btn"
+        >
+          View Playlist →
+        </a>
+
 
       </article>
 
@@ -748,9 +1152,9 @@ body{
 
 
 
-<!-- =========================
+<!-- =====================================================
      ABOUT
-========================= -->
+===================================================== -->
 
 <section
   class="section"
@@ -759,38 +1163,45 @@ body{
 
   <div class="container">
 
+
     <div class="about">
+
 
       <h2 class="section-title">
         About MugenBD
       </h2>
 
+
       <p>
-        MugenBD is focused on anime-inspired
-        fighting games, MUGEN projects,
-        custom characters and Android gaming.
+        MugenBD focuses on anime-inspired fighting
+        games, MUGEN projects, custom characters
+        and Android gaming content.
       </p>
 
 
       <div class="social">
 
+
         <a
           href="https://youtube.com/@mugenbd"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           YouTube
         </a>
 
+
         <a
           href="https://t.me/MugenBD"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Telegram
         </a>
 
+
       </div>
+
 
     </div>
 
@@ -800,9 +1211,9 @@ body{
 
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer class="footer">
 
