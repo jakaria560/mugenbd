@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Complete Steps to Unlock - MugenBD</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,
+body{
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f5f7;
+  color:#333;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.container{
+  width:100%;
+  max-width:700px;
+  margin:0 auto;
+  padding:45px 12px;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.unlock-card{
+  width:100%;
+  background:#fff;
+  border-radius:28px;
+  padding:55px 46px 40px;
+  box-shadow:0 7px 30px rgba(0,0,0,.06);
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.title{
+  text-align:center;
+  color:#173f6b;
+  font-size:36px;
+  font-weight:700;
+  line-height:1.25;
+  margin-bottom:25px;
+}
+
+
+/* =====================================================
+   SUBTITLE BADGE
+===================================================== */
+
+.badge{
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 55px;
+
+  padding:13px 35px;
+
+  border-radius:40px;
+
+  background:#eceaff;
+
+  color:#5650d8;
+
+  font-size:20px;
+  font-weight:700;
+
+  text-align:center;
+}
+
+
+/* =====================================================
+   STEP BUTTONS
+===================================================== */
+
+.step-button{
+  position:relative;
+
+  width:100%;
+  height:82px;
+
+  border:0;
+  border-radius:25px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 28px;
+
+  color:#fff;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:22px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  margin-bottom:28px;
+
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+
+  transition:
+    transform .15s,
+    opacity .2s;
+}
+
+.step-button:active{
+  transform:scale(.985);
+}
+
+
+/* YouTube */
+
+.youtube-button{
+  background:#ff2028;
+}
+
+
+/* Telegram */
+
+.telegram-button{
+  background:#269ed1;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.step-icon{
+  width:42px;
+  min-width:42px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:25px;
+}
+
+.step-text{
+  flex:1;
+  text-align:center;
+  padding:0 8px;
+}
+
+.step-arrow{
+  width:35px;
+  min-width:35px;
+
+  text-align:right;
+
+  font-size:38px;
+  font-weight:400;
+  line-height:1;
+}
+
+
+/* =====================================================
+   COMPLETED BUTTON
+===================================================== */
+
+.step-button.completed{
+  opacity:.72;
+}
+
+.step-button.completed .step-arrow{
+  font-size:25px;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status{
+  text-align:center;
+
+  font-size:22px;
+  font-weight:700;
+
+  color:#555;
+
+  margin-top:45px;
+  margin-bottom:20px;
+}
+
+
+/* =====================================================
+   PROGRESS BAR
+===================================================== */
+
+.progress-container{
+  width:100%;
+  height:11px;
+
+  background:#e1e7ed;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  margin-bottom:45px;
+}
+
+.progress-bar{
+  width:0%;
+  height:100%;
+
+  border-radius:20px;
+
+  background:linear-gradient(
+    90deg,
+    #b778ef,
+    #8eb5f3
+  );
+
+  transition:width .4s ease;
+}
+
+
+/* =====================================================
+   GET LINK
+===================================================== */
+
+.get-link{
+  width:100%;
+  height:82px;
+
+  border:0;
+  border-radius:25px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 28px;
+
+  background:linear-gradient(
+    90deg,
+    #c99cf1,
+    #8fb7f3
+  );
+
+  color:#fff;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:22px;
+  font-weight:700;
+
+  cursor:not-allowed;
+
+  opacity:.55;
+
+  box-shadow:0 8px 22px rgba(145,130,220,.12);
+
+  transition:
+    opacity .25s,
+    transform .15s;
+}
+
+.get-link.unlocked{
+  opacity:1;
+  cursor:pointer;
+}
+
+.get-link.unlocked:active{
+  transform:scale(.985);
+}
+
+.get-icon{
+  width:42px;
+  min-width:42px;
+
+  font-size:26px;
+
+  display:flex;
+  justify-content:center;
+}
+
+.get-text{
+  flex:1;
+  text-align:center;
+}
+
+.get-arrow{
+  width:35px;
+  min-width:35px;
+
+  text-align:right;
+
+  font-size:38px;
+  font-weight:400;
+}
+
+
+/* =====================================================
+   SHARE BOX
+===================================================== */
+
+.share-box{
+  margin-top:75px;
+
+  padding:30px 28px;
+
+  background:#f8f9fb;
+
+  border-radius:18px;
+}
+
+.share-title{
+  text-align:center;
+
+  color:#9b52df;
+
+  font-size:20px;
+  font-weight:700;
+
+  margin-bottom:18px;
+}
+
+.share-input{
+  width:100%;
+
+  height:65px;
+
+  border:1px solid #dfe4e8;
+
+  border-radius:14px;
+
+  background:#fff;
+
+  padding:0 18px;
+
+  color:#5d6670;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:16px;
+
+  outline:none;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message{
+  display:none;
+
+  text-align:center;
+
+  margin-top:18px;
+
+  color:#777;
+
+  font-size:14px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+  .container{
+    padding:28px 10px;
+  }
+
+  .unlock-card{
+    border-radius:25px;
+    padding:43px 24px 30px;
+  }
+
+  .title{
+    font-size:30px;
+    margin-bottom:22px;
+  }
+
+  .badge{
+    font-size:18px;
+    padding:11px 25px;
+    margin-bottom:48px;
+  }
+
+  .step-button{
+    height:78px;
+    border-radius:23px;
+    padding:0 20px;
+    font-size:20px;
+    margin-bottom:27px;
+  }
+
+  .step-icon{
+    width:35px;
+    min-width:35px;
+    font-size:22px;
+  }
+
+  .step-arrow{
+    width:30px;
+    min-width:30px;
+    font-size:34px;
+  }
+
+  .status{
+    font-size:20px;
+    margin-top:43px;
+    margin-bottom:18px;
+  }
+
+  .progress-container{
+    height:10px;
+    margin-bottom:42px;
+  }
+
+  .get-link{
+    height:78px;
+    border-radius:23px;
+    padding:0 20px;
+    font-size:20px;
+  }
+
+  .get-icon{
+    width:35px;
+    min-width:35px;
+    font-size:23px;
+  }
+
+  .get-arrow{
+    width:30px;
+    min-width:30px;
+    font-size:34px;
+  }
+
+  .share-box{
+    margin-top:70px;
+    padding:27px 20px;
+  }
+
+  .share-title{
+    font-size:18px;
+  }
+
+  .share-input{
+    height:61px;
+    font-size:14px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media(max-width:380px){
+
+  .unlock-card{
+    padding:37px 18px 27px;
+  }
+
+  .title{
+    font-size:27px;
+  }
+
+  .badge{
+    font-size:16px;
+    padding:10px 20px;
+  }
+
+  .step-button{
+    height:72px;
+    font-size:18px;
+    border-radius:21px;
+  }
+
+  .get-link{
+    height:72px;
+    font-size:18px;
+    border-radius:21px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+  <div class="unlock-card">
+
+
+    <!-- =================================================
+         TITLE
+    ================================================= -->
+
+    <h1 class="title">
+      Complete Steps to Unlock
+    </h1>
+
+
+    <!-- =================================================
+         BADGE
+    ================================================= -->
+
+    <div class="badge">
+      COMPLETE THE STEPS BELOW
+    </div>
+
+
+    <!-- =================================================
+         YOUTUBE
+    ================================================= -->
+
+    <button
+      id="youtubeBtn"
+      class="step-button youtube-button"
+      type="button"
+    >
+
+      <span class="step-icon">
+        ▶
+      </span>
+
+      <span class="step-text">
+        Subscribe Channel
+      </span>
+
+      <span class="step-arrow">
+        →
+      </span>
+
+    </button>
+
+
+    <!-- =================================================
+         TELEGRAM
+    ================================================= -->
+
+    <button
+      id="telegramBtn"
+      class="step-button telegram-button"
+      type="button"
+    >
+
+      <span class="step-icon">
+        ➤
+      </span>
+
+      <span class="step-text">
+        Join Telegram
+      </span>
+
+      <span class="step-arrow">
+        →
+      </span>
+
+    </button>
+
+
+    <!-- =================================================
+         STATUS
+    ================================================= -->
+
+    <div
+      id="status"
+      class="status"
+    >
+      Steps Completed 0/2
+    </div>
+
+
+    <!-- =================================================
+         PROGRESS
+    ================================================= -->
+
+    <div class="progress-container">
+
+      <div
+        id="progressBar"
+        class="progress-bar"
+      ></div>
+
+    </div>
+
+
+    <!-- =================================================
+         GET LINK
+    ================================================= -->
+
+    <button
+      id="getLink"
+      class="get-link"
+      type="button"
+    >
+
+      <span class="get-icon">
+        🔗
+      </span>
+
+      <span class="get-text">
+        Get Your Link
+      </span>
+
+      <span class="get-arrow">
+        →
+      </span>
+
+    </button>
+
+
+    <!-- =================================================
+         SHARE
+    ================================================= -->
+
+    <div class="share-box">
+
+      <div class="share-title">
+        ↗ Copy Url To Share This Page
+      </div>
+
+      <input
+        id="shareUrl"
+        class="share-input"
+        type="text"
+        readonly
+      >
+
+    </div>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const youtubeBtn =
+  document.getElementById("youtubeBtn");
+
+const telegramBtn =
+  document.getElementById("telegramBtn");
+
+const getLink =
+  document.getElementById("getLink");
+
+const statusText =
+  document.getElementById("status");
+
+const progressBar =
+  document.getElementById("progressBar");
+
+const shareUrl =
+  document.getElementById("shareUrl");
+
+const message =
+  document.getElementById("message");
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let youtubeLink = "";
+let telegramLink = "";
+let destinationLink = "";
+
+let youtubeCompleted = false;
+let telegramCompleted = false;
+
+
+/* =====================================================
+   DECODE DATA
+===================================================== */
+
+function decodeData(encoded){
+
+  try{
+
+    const binary =
+      atob(encoded);
+
+    const bytes =
+      new Uint8Array(
+        binary.length
+      );
+
+    for(
+      let i = 0;
+      i < binary.length;
+      i++
+    ){
+
+      bytes[i] =
+        binary.charCodeAt(i);
+
+    }
+
+    const json =
+      new TextDecoder()
+        .decode(bytes);
+
+    return JSON.parse(json);
+
+  }catch(error){
+
+    return null;
+
+  }
+
+}
+
+
+/* =====================================================
+   GET DATA FROM URL
+===================================================== */
+
+function loadData(){
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const encoded =
+    params.get("data");
+
+
+  /* No data */
+
+  if(!encoded){
+
+    message.textContent =
+      "Invalid unlock link.";
+
+    message.style.display =
+      "block";
+
+    return false;
+
+  }
+
+
+  const data =
+    decodeData(encoded);
+
+
+  if(
+    !data ||
+    !data.youtube ||
+    !data.telegram ||
+    !data.destination
+  ){
+
+    message.textContent =
+      "This unlock link is invalid or incomplete.";
+
+    message.style.display =
+      "block";
+
+    return false;
+
+  }
+
+
+  youtubeLink =
+    data.youtube;
+
+  telegramLink =
+    data.telegram;
+
+  destinationLink =
+    data.destination;
+
+
+  return true;
+
+}
+
+
+/* =====================================================
+   UPDATE PROGRESS
+===================================================== */
+
+function updateProgress(){
+
+  let completed = 0;
+
+
+  if(youtubeCompleted){
+    completed++;
+  }
+
+  if(telegramCompleted){
+    completed++;
+  }
+
+
+  statusText.textContent =
+    "Steps Completed " +
+    completed +
+    "/2";
+
+
+  progressBar.style.width =
+    (completed * 50) +
+    "%";
+
+
+  if(completed === 2){
+
+    getLink.classList.add(
+      "unlocked"
+    );
+
+  }else{
+
+    getLink.classList.remove(
+      "unlocked"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   YOUTUBE
+===================================================== */
+
+youtubeBtn.addEventListener(
+  "click",
+  function(){
+
+    if(!youtubeCompleted){
+
+      window.open(
+        youtubeLink,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      youtubeCompleted =
+        true;
+
+      youtubeBtn.classList.add(
+        "completed"
+      );
+
+      youtubeBtn.querySelector(
+        ".step-arrow"
+      ).textContent = "✓";
+
+
+      updateProgress();
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   TELEGRAM
+===================================================== */
+
+telegramBtn.addEventListener(
+  "click",
+  function(){
+
+    if(!telegramCompleted){
+
+      window.open(
+        telegramLink,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      telegramCompleted =
+        true;
+
+      telegramBtn.classList.add(
+        "completed"
+      );
+
+      telegramBtn.querySelector(
+        ".step-arrow"
+      ).textContent = "✓";
+
+
+      updateProgress();
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   GET DESTINATION LINK
+===================================================== */
+
+getLink.addEventListener(
+  "click",
+  function(){
+
+    if(
+      !youtubeCompleted ||
+      !telegramCompleted
+    ){
+
+      return;
+
+    }
+
+
+    if(!destinationLink){
+
+      return;
+
+    }
+
+
+    window.open(
+      destinationLink,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  }
+);
+
+
+/* =====================================================
+   SHARE URL
+===================================================== */
+
+shareUrl.value =
+  window.location.href;
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadData();
+
+updateProgress();
+
+</script>
+
+
+</body>
+
+  </html>
