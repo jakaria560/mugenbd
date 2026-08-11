@@ -4,16 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Complete Steps to Unlock - MugenBD</title>
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
 
 *{
   box-sizing:border-box;
@@ -35,99 +30,101 @@ body{
 }
 
 
-/* =====================================================
-   MAIN
-===================================================== */
+/* ================================
+   CONTAINER
+================================ */
 
 .container{
   width:100%;
-  max-width:700px;
-  margin:0 auto;
-  padding:45px 12px;
+  max-width:610px;
+  margin:auto;
+  padding:20px 9px;
 }
 
 
-/* =====================================================
+/* ================================
    CARD
-===================================================== */
+================================ */
 
 .unlock-card{
   width:100%;
   background:#fff;
-  border-radius:28px;
-  padding:55px 46px 40px;
-  box-shadow:0 7px 30px rgba(0,0,0,.06);
+  border-radius:20px;
+  padding:30px 25px 25px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
 
-/* =====================================================
+/* ================================
    TITLE
-===================================================== */
+================================ */
 
 .title{
   text-align:center;
   color:#173f6b;
-  font-size:36px;
+
+  font-size:25px;
   font-weight:700;
+
   line-height:1.25;
-  margin-bottom:25px;
+
+  margin-bottom:15px;
 }
 
 
-/* =====================================================
-   SUBTITLE BADGE
-===================================================== */
+/* ================================
+   BADGE
+================================ */
 
 .badge{
   width:max-content;
   max-width:100%;
-  margin:0 auto 55px;
 
-  padding:13px 35px;
+  margin:0 auto 30px;
 
-  border-radius:40px;
+  padding:8px 19px;
+
+  border-radius:25px;
 
   background:#eceaff;
 
   color:#5650d8;
 
-  font-size:20px;
+  font-size:14px;
   font-weight:700;
 
   text-align:center;
 }
 
 
-/* =====================================================
-   STEP BUTTONS
-===================================================== */
+/* ================================
+   STEP BUTTON
+================================ */
 
 .step-button{
-  position:relative;
-
   width:100%;
-  height:82px;
+  height:58px;
 
   border:0;
-  border-radius:25px;
+  border-radius:17px;
 
   display:flex;
   align-items:center;
 
-  padding:0 28px;
+  padding:0 16px;
 
   color:#fff;
 
   font-family:Arial,Helvetica,sans-serif;
 
-  font-size:22px;
+  font-size:16px;
   font-weight:700;
 
   cursor:pointer;
 
-  margin-bottom:28px;
+  margin-bottom:17px;
 
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  box-shadow:0 5px 14px rgba(0,0,0,.06);
 
   transition:
     transform .15s,
@@ -138,91 +135,84 @@ body{
   transform:scale(.985);
 }
 
-
-/* YouTube */
-
 .youtube-button{
   background:#ff2028;
 }
-
-
-/* Telegram */
 
 .telegram-button{
   background:#269ed1;
 }
 
 
-/* =====================================================
-   ICON
-===================================================== */
+/* ================================
+   STEP ICON
+================================ */
 
 .step-icon{
-  width:42px;
-  min-width:42px;
+  width:29px;
+  min-width:29px;
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  font-size:25px;
+  font-size:18px;
 }
 
 .step-text{
   flex:1;
   text-align:center;
-  padding:0 8px;
+  padding:0 5px;
 }
 
 .step-arrow{
-  width:35px;
-  min-width:35px;
+  width:25px;
+  min-width:25px;
 
   text-align:right;
 
-  font-size:38px;
+  font-size:26px;
   font-weight:400;
-  line-height:1;
 }
 
 
-/* =====================================================
-   COMPLETED BUTTON
-===================================================== */
+/* ================================
+   COMPLETED
+================================ */
 
 .step-button.completed{
   opacity:.72;
 }
 
 .step-button.completed .step-arrow{
-  font-size:25px;
+  font-size:19px;
 }
 
 
-/* =====================================================
+/* ================================
    STATUS
-===================================================== */
+================================ */
 
 .status{
   text-align:center;
 
-  font-size:22px;
+  font-size:16px;
   font-weight:700;
 
   color:#555;
 
-  margin-top:45px;
-  margin-bottom:20px;
+  margin-top:27px;
+  margin-bottom:12px;
 }
 
 
-/* =====================================================
-   PROGRESS BAR
-===================================================== */
+/* ================================
+   PROGRESS
+================================ */
 
 .progress-container{
   width:100%;
-  height:11px;
+  height:7px;
 
   background:#e1e7ed;
 
@@ -230,7 +220,7 @@ body{
 
   overflow:hidden;
 
-  margin-bottom:45px;
+  margin-bottom:27px;
 }
 
 .progress-bar{
@@ -249,21 +239,21 @@ body{
 }
 
 
-/* =====================================================
+/* ================================
    GET LINK
-===================================================== */
+================================ */
 
 .get-link{
   width:100%;
-  height:82px;
+  height:58px;
 
   border:0;
-  border-radius:25px;
+  border-radius:17px;
 
   display:flex;
   align-items:center;
 
-  padding:0 28px;
+  padding:0 16px;
 
   background:linear-gradient(
     90deg,
@@ -275,14 +265,14 @@ body{
 
   font-family:Arial,Helvetica,sans-serif;
 
-  font-size:22px;
+  font-size:16px;
   font-weight:700;
 
   cursor:not-allowed;
 
   opacity:.55;
 
-  box-shadow:0 8px 22px rgba(145,130,220,.12);
+  box-shadow:0 5px 14px rgba(145,130,220,.08);
 
   transition:
     opacity .25s,
@@ -299,10 +289,10 @@ body{
 }
 
 .get-icon{
-  width:42px;
-  min-width:42px;
+  width:29px;
+  min-width:29px;
 
-  font-size:26px;
+  font-size:18px;
 
   display:flex;
   justify-content:center;
@@ -314,28 +304,28 @@ body{
 }
 
 .get-arrow{
-  width:35px;
-  min-width:35px;
+  width:25px;
+  min-width:25px;
 
   text-align:right;
 
-  font-size:38px;
+  font-size:26px;
   font-weight:400;
 }
 
 
-/* =====================================================
+/* ================================
    SHARE BOX
-===================================================== */
+================================ */
 
 .share-box{
-  margin-top:75px;
+  margin-top:40px;
 
-  padding:30px 28px;
+  padding:19px 16px;
 
   background:#f8f9fb;
 
-  border-radius:18px;
+  border-radius:14px;
 }
 
 .share-title{
@@ -343,174 +333,174 @@ body{
 
   color:#9b52df;
 
-  font-size:20px;
+  font-size:15px;
   font-weight:700;
 
-  margin-bottom:18px;
+  margin-bottom:11px;
 }
 
 .share-input{
   width:100%;
 
-  height:65px;
+  height:48px;
 
   border:1px solid #dfe4e8;
 
-  border-radius:14px;
+  border-radius:10px;
 
   background:#fff;
 
-  padding:0 18px;
+  padding:0 12px;
 
   color:#5d6670;
 
   font-family:Arial,Helvetica,sans-serif;
 
-  font-size:16px;
+  font-size:12px;
 
   outline:none;
 }
 
 
-/* =====================================================
+/* ================================
    MESSAGE
-===================================================== */
+================================ */
 
 .message{
   display:none;
 
   text-align:center;
 
-  margin-top:18px;
+  margin-top:12px;
 
   color:#777;
 
-  font-size:14px;
+  font-size:12px;
 }
 
 
-/* =====================================================
+/* ================================
    MOBILE
-===================================================== */
+================================ */
 
 @media(max-width:600px){
 
   .container{
-    padding:28px 10px;
+    padding:15px 7px;
   }
 
   .unlock-card{
-    border-radius:25px;
-    padding:43px 24px 30px;
+    border-radius:18px;
+    padding:27px 19px 22px;
   }
 
   .title{
-    font-size:30px;
-    margin-bottom:22px;
+    font-size:23px;
+    margin-bottom:13px;
   }
 
   .badge{
-    font-size:18px;
-    padding:11px 25px;
-    margin-bottom:48px;
-  }
-
-  .step-button{
-    height:78px;
-    border-radius:23px;
-    padding:0 20px;
-    font-size:20px;
+    font-size:13px;
+    padding:7px 16px;
     margin-bottom:27px;
   }
 
+  .step-button{
+    height:54px;
+    border-radius:16px;
+    padding:0 14px;
+
+    font-size:15px;
+
+    margin-bottom:15px;
+  }
+
   .step-icon{
-    width:35px;
-    min-width:35px;
-    font-size:22px;
+    width:27px;
+    min-width:27px;
+    font-size:17px;
   }
 
   .step-arrow{
-    width:30px;
-    min-width:30px;
-    font-size:34px;
+    width:23px;
+    min-width:23px;
+    font-size:24px;
   }
 
   .status{
-    font-size:20px;
-    margin-top:43px;
-    margin-bottom:18px;
+    font-size:15px;
+    margin-top:24px;
+    margin-bottom:11px;
   }
 
   .progress-container{
-    height:10px;
-    margin-bottom:42px;
+    height:6px;
+    margin-bottom:25px;
   }
 
   .get-link{
-    height:78px;
-    border-radius:23px;
-    padding:0 20px;
-    font-size:20px;
+    height:54px;
+    border-radius:16px;
+    padding:0 14px;
+    font-size:15px;
   }
 
   .get-icon{
-    width:35px;
-    min-width:35px;
-    font-size:23px;
+    width:27px;
+    min-width:27px;
+    font-size:17px;
   }
 
   .get-arrow{
-    width:30px;
-    min-width:30px;
-    font-size:34px;
+    width:23px;
+    min-width:23px;
+    font-size:24px;
   }
 
   .share-box{
-    margin-top:70px;
-    padding:27px 20px;
+    margin-top:35px;
+    padding:18px 14px;
   }
 
   .share-title{
-    font-size:18px;
+    font-size:14px;
   }
 
   .share-input{
-    height:61px;
-    font-size:14px;
+    height:46px;
+    font-size:12px;
   }
 
 }
 
 
-/* =====================================================
-   SMALL PHONES
-===================================================== */
+/* ================================
+   VERY SMALL PHONES
+================================ */
 
 @media(max-width:380px){
 
   .unlock-card{
-    padding:37px 18px 27px;
+    padding:25px 16px 20px;
   }
 
   .title{
-    font-size:27px;
+    font-size:21px;
   }
 
   .badge{
-    font-size:16px;
-    padding:10px 20px;
+    font-size:12px;
+    padding:6px 14px;
   }
 
   .step-button{
-    height:72px;
-    font-size:18px;
-    border-radius:21px;
+    height:51px;
+    font-size:14px;
   }
 
   .get-link{
-    height:72px;
-    font-size:18px;
-    border-radius:21px;
+    height:51px;
+    font-size:14px;
   }
 
 }
@@ -522,193 +512,165 @@ body{
 
 <body>
 
-
 <div class="container">
 
-  <div class="unlock-card">
+<div class="unlock-card">
 
 
-    <!-- =================================================
-         TITLE
-    ================================================= -->
-
-    <h1 class="title">
-      Complete Steps to Unlock
-    </h1>
+<h1 class="title">
+Complete Steps to Unlock
+</h1>
 
 
-    <!-- =================================================
-         BADGE
-    ================================================= -->
-
-    <div class="badge">
-      COMPLETE THE STEPS BELOW
-    </div>
+<div class="badge">
+COMPLETE THE STEPS BELOW
+</div>
 
 
-    <!-- =================================================
-         YOUTUBE
-    ================================================= -->
+<!-- YOUTUBE -->
 
-    <button
-      id="youtubeBtn"
-      class="step-button youtube-button"
-      type="button"
-    >
+<button
+id="youtubeBtn"
+class="step-button youtube-button"
+type="button"
+>
 
-      <span class="step-icon">
-        ▶
-      </span>
+<span class="step-icon">▶</span>
 
-      <span class="step-text">
-        Subscribe Channel
-      </span>
+<span class="step-text">
+Subscribe Channel
+</span>
 
-      <span class="step-arrow">
-        →
-      </span>
+<span class="step-arrow">→</span>
 
-    </button>
+</button>
 
 
-    <!-- =================================================
-         TELEGRAM
-    ================================================= -->
+<!-- TELEGRAM -->
 
-    <button
-      id="telegramBtn"
-      class="step-button telegram-button"
-      type="button"
-    >
+<button
+id="telegramBtn"
+class="step-button telegram-button"
+type="button"
+>
 
-      <span class="step-icon">
-        ➤
-      </span>
+<span class="step-icon">➤</span>
 
-      <span class="step-text">
-        Join Telegram
-      </span>
+<span class="step-text">
+Join Telegram
+</span>
 
-      <span class="step-arrow">
-        →
-      </span>
+<span class="step-arrow">→</span>
 
-    </button>
+</button>
 
 
-    <!-- =================================================
-         STATUS
-    ================================================= -->
+<!-- STATUS -->
 
-    <div
-      id="status"
-      class="status"
-    >
-      Steps Completed 0/2
-    </div>
+<div
+id="status"
+class="status"
+>
+Steps Completed 0/2
+</div>
 
 
-    <!-- =================================================
-         PROGRESS
-    ================================================= -->
+<!-- PROGRESS -->
 
-    <div class="progress-container">
+<div class="progress-container">
 
-      <div
-        id="progressBar"
-        class="progress-bar"
-      ></div>
+<div
+id="progressBar"
+class="progress-bar"
+></div>
 
-    </div>
+</div>
 
 
-    <!-- =================================================
-         GET LINK
-    ================================================= -->
+<!-- GET LINK -->
 
-    <button
-      id="getLink"
-      class="get-link"
-      type="button"
-    >
+<button
+id="getLink"
+class="get-link"
+type="button"
+>
 
-      <span class="get-icon">
-        🔗
-      </span>
+<span class="get-icon">
+🔗
+</span>
 
-      <span class="get-text">
-        Get Your Link
-      </span>
+<span class="get-text">
+Get Your Link
+</span>
 
-      <span class="get-arrow">
-        →
-      </span>
+<span class="get-arrow">
+→
+</span>
 
-    </button>
+</button>
 
 
-    <!-- =================================================
-         SHARE
-    ================================================= -->
+<!-- SHARE -->
 
-    <div class="share-box">
+<div class="share-box">
 
-      <div class="share-title">
-        ↗ Copy Url To Share This Page
-      </div>
+<div class="share-title">
+↗ Copy Url To Share This Page
+</div>
 
-      <input
-        id="shareUrl"
-        class="share-input"
-        type="text"
-        readonly
-      >
+<input
+id="shareUrl"
+class="share-input"
+type="text"
+readonly
+>
 
-    </div>
+</div>
 
 
-    <div
-      id="message"
-      class="message"
-    ></div>
+<div
+id="message"
+class="message"
+></div>
 
 
-  </div>
+</div>
 
 </div>
 
 
 <script>
 
-/* =====================================================
+
+/* ================================
    ELEMENTS
-===================================================== */
+================================ */
 
 const youtubeBtn =
-  document.getElementById("youtubeBtn");
+document.getElementById("youtubeBtn");
 
 const telegramBtn =
-  document.getElementById("telegramBtn");
+document.getElementById("telegramBtn");
 
 const getLink =
-  document.getElementById("getLink");
+document.getElementById("getLink");
 
 const statusText =
-  document.getElementById("status");
+document.getElementById("status");
 
 const progressBar =
-  document.getElementById("progressBar");
+document.getElementById("progressBar");
 
 const shareUrl =
-  document.getElementById("shareUrl");
+document.getElementById("shareUrl");
 
 const message =
-  document.getElementById("message");
+document.getElementById("message");
 
 
-/* =====================================================
+/* ================================
    DATA
-===================================================== */
+================================ */
 
 let youtubeLink = "";
 let telegramLink = "";
@@ -718,279 +680,265 @@ let youtubeCompleted = false;
 let telegramCompleted = false;
 
 
-/* =====================================================
+/* ================================
    DECODE DATA
-===================================================== */
+================================ */
 
 function decodeData(encoded){
 
-  try{
+try{
 
-    const binary =
-      atob(encoded);
+const binary =
+atob(encoded);
 
-    const bytes =
-      new Uint8Array(
-        binary.length
-      );
+const bytes =
+new Uint8Array(binary.length);
 
-    for(
-      let i = 0;
-      i < binary.length;
-      i++
-    ){
+for(
+let i=0;
+i<binary.length;
+i++
+){
 
-      bytes[i] =
-        binary.charCodeAt(i);
+bytes[i] =
+binary.charCodeAt(i);
 
-    }
+}
 
-    const json =
-      new TextDecoder()
-        .decode(bytes);
+const json =
+new TextDecoder().decode(bytes);
 
-    return JSON.parse(json);
+return JSON.parse(json);
 
-  }catch(error){
+}catch(error){
 
-    return null;
+return null;
 
-  }
+}
 
 }
 
 
-/* =====================================================
-   GET DATA FROM URL
-===================================================== */
+/* ================================
+   LOAD DATA
+================================ */
 
 function loadData(){
 
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
+const params =
+new URLSearchParams(
+window.location.search
+);
 
-  const encoded =
-    params.get("data");
+const encoded =
+params.get("data");
 
+if(!encoded){
 
-  /* No data */
+message.textContent =
+"Invalid unlock link.";
 
-  if(!encoded){
+message.style.display =
+"block";
 
-    message.textContent =
-      "Invalid unlock link.";
-
-    message.style.display =
-      "block";
-
-    return false;
-
-  }
-
-
-  const data =
-    decodeData(encoded);
-
-
-  if(
-    !data ||
-    !data.youtube ||
-    !data.telegram ||
-    !data.destination
-  ){
-
-    message.textContent =
-      "This unlock link is invalid or incomplete.";
-
-    message.style.display =
-      "block";
-
-    return false;
-
-  }
-
-
-  youtubeLink =
-    data.youtube;
-
-  telegramLink =
-    data.telegram;
-
-  destinationLink =
-    data.destination;
-
-
-  return true;
+return false;
 
 }
 
 
-/* =====================================================
+const data =
+decodeData(encoded);
+
+
+if(
+!data ||
+!data.youtube ||
+!data.telegram ||
+!data.destination
+){
+
+message.textContent =
+"This unlock link is invalid or incomplete.";
+
+message.style.display =
+"block";
+
+return false;
+
+}
+
+
+youtubeLink =
+data.youtube;
+
+telegramLink =
+data.telegram;
+
+destinationLink =
+data.destination;
+
+return true;
+
+}
+
+
+/* ================================
    UPDATE PROGRESS
-===================================================== */
+================================ */
 
 function updateProgress(){
 
-  let completed = 0;
+let completed = 0;
+
+if(youtubeCompleted){
+completed++;
+}
+
+if(telegramCompleted){
+completed++;
+}
 
 
-  if(youtubeCompleted){
-    completed++;
-  }
-
-  if(telegramCompleted){
-    completed++;
-  }
+statusText.textContent =
+"Steps Completed " +
+completed +
+"/2";
 
 
-  statusText.textContent =
-    "Steps Completed " +
-    completed +
-    "/2";
+progressBar.style.width =
+(completed * 50) +
+"%";
 
 
-  progressBar.style.width =
-    (completed * 50) +
-    "%";
+if(completed === 2){
 
+getLink.classList.add(
+"unlocked"
+);
 
-  if(completed === 2){
+}else{
 
-    getLink.classList.add(
-      "unlocked"
-    );
+getLink.classList.remove(
+"unlocked"
+);
 
-  }else{
-
-    getLink.classList.remove(
-      "unlocked"
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
+/* ================================
    YOUTUBE
-===================================================== */
+================================ */
 
 youtubeBtn.addEventListener(
-  "click",
-  function(){
+"click",
+function(){
 
-    if(!youtubeCompleted){
+if(youtubeCompleted){
+return;
+}
 
-      window.open(
-        youtubeLink,
-        "_blank",
-        "noopener,noreferrer"
-      );
+window.open(
+youtubeLink,
+"_blank",
+"noopener,noreferrer"
+);
 
-      youtubeCompleted =
-        true;
+youtubeCompleted =
+true;
 
-      youtubeBtn.classList.add(
-        "completed"
-      );
+youtubeBtn.classList.add(
+"completed"
+);
 
-      youtubeBtn.querySelector(
-        ".step-arrow"
-      ).textContent = "✓";
+youtubeBtn.querySelector(
+".step-arrow"
+).textContent = "✓";
 
+updateProgress();
 
-      updateProgress();
-
-    }
-
-  }
+}
 );
 
 
-/* =====================================================
+/* ================================
    TELEGRAM
-===================================================== */
+================================ */
 
 telegramBtn.addEventListener(
-  "click",
-  function(){
+"click",
+function(){
 
-    if(!telegramCompleted){
+if(telegramCompleted){
+return;
+}
 
-      window.open(
-        telegramLink,
-        "_blank",
-        "noopener,noreferrer"
-      );
+window.open(
+telegramLink,
+"_blank",
+"noopener,noreferrer"
+);
 
-      telegramCompleted =
-        true;
+telegramCompleted =
+true;
 
-      telegramBtn.classList.add(
-        "completed"
-      );
+telegramBtn.classList.add(
+"completed"
+);
 
-      telegramBtn.querySelector(
-        ".step-arrow"
-      ).textContent = "✓";
+telegramBtn.querySelector(
+".step-arrow"
+).textContent = "✓";
 
+updateProgress();
 
-      updateProgress();
-
-    }
-
-  }
+}
 );
 
 
-/* =====================================================
-   GET DESTINATION LINK
-===================================================== */
+/* ================================
+   GET LINK
+================================ */
 
 getLink.addEventListener(
-  "click",
-  function(){
+"click",
+function(){
 
-    if(
-      !youtubeCompleted ||
-      !telegramCompleted
-    ){
+if(
+!youtubeCompleted ||
+!telegramCompleted
+){
 
-      return;
+return;
 
-    }
+}
 
+if(!destinationLink){
+return;
+}
 
-    if(!destinationLink){
+window.open(
+destinationLink,
+"_blank",
+"noopener,noreferrer"
+);
 
-      return;
-
-    }
-
-
-    window.open(
-      destinationLink,
-      "_blank",
-      "noopener,noreferrer"
-    );
-
-  }
+}
 );
 
 
-/* =====================================================
+/* ================================
    SHARE URL
-===================================================== */
+================================ */
 
 shareUrl.value =
-  window.location.href;
+window.location.href;
 
 
-/* =====================================================
+/* ================================
    START
-===================================================== */
+================================ */
 
 loadData();
 
@@ -998,7 +946,6 @@ updateProgress();
 
 </script>
 
-
 </body>
 
-  </html>
+</html>
