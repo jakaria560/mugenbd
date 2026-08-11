@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sub4Unlock Link Generator - MugenBD</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,
+body{
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f5f8;
+  color:#333;
+  line-height:1.6;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.container{
+  width:100%;
+  max-width:720px;
+  margin:0 auto;
+  padding:35px 15px;
+}
+
+
+/* =====================================================
+   GENERATOR CARD
+===================================================== */
+
+.generator-card{
+  background:#fff;
+  border-radius:24px;
+  padding:55px 36px 40px;
+  box-shadow:0 8px 35px rgba(0,0,0,.08);
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.title{
+  text-align:center;
+  color:#173f6b;
+  font-size:38px;
+  font-weight:700;
+  margin-bottom:48px;
+  line-height:1.25;
+}
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group{
+  margin-bottom:32px;
+}
+
+.form-label{
+  display:block;
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:#333;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.form-input{
+  width:100%;
+  height:90px;
+  border:1px solid #cfd5da;
+  border-radius:18px;
+  padding:0 28px;
+  font-size:23px;
+  color:#444;
+  outline:none;
+  background:#fff;
+  transition:.2s;
+}
+
+.form-input::placeholder{
+  color:#777;
+}
+
+.form-input:focus{
+  border-color:#3b82f6;
+  box-shadow:0 0 0 3px rgba(59,130,246,.08);
+}
+
+
+/* =====================================================
+   GENERATE BUTTON
+===================================================== */
+
+.generate-btn{
+  width:100%;
+  height:100px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(
+    90deg,
+    #4d3be8,
+    #3489ed
+  );
+  color:#fff;
+  font-size:26px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:2px;
+  box-shadow:0 8px 22px rgba(52,137,237,.18);
+  transition:.2s;
+}
+
+.generate-btn:hover{
+  transform:translateY(-1px);
+}
+
+.generate-btn:active{
+  transform:scale(.99);
+}
+
+
+/* =====================================================
+   GENERATED LINK BOX
+===================================================== */
+
+.result-box{
+  display:none;
+  margin-top:35px;
+  padding:28px;
+  border:2px dashed #1688b6;
+  border-radius:18px;
+  background:#e3f4ff;
+}
+
+.result-title{
+  color:#08729c;
+  font-size:27px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+
+/* =====================================================
+   GENERATED LINK TEXTAREA
+===================================================== */
+
+.generated-link{
+  width:100%;
+  min-height:190px;
+  resize:none;
+  border:1px solid #c5e0ee;
+  border-radius:13px;
+  background:#fff;
+  padding:18px 20px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:18px;
+  line-height:1.55;
+  color:#394b59;
+  outline:none;
+  word-break:break-all;
+}
+
+
+/* =====================================================
+   COPY BUTTON
+===================================================== */
+
+.copy-btn{
+  margin-top:18px;
+  border:none;
+  background:#0788c7;
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+  padding:15px 32px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.copy-btn:hover{
+  background:#0574a9;
+}
+
+.copy-btn.copied{
+  background:#168a52;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error{
+  display:none;
+  margin-top:15px;
+  padding:12px 15px;
+  background:#ffe9e9;
+  border:1px solid #ffbcbc;
+  border-radius:10px;
+  color:#c62828;
+  font-size:14px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+  .container{
+    padding:25px 12px;
+  }
+
+  .generator-card{
+    border-radius:22px;
+    padding:35px 24px 30px;
+  }
+
+  .title{
+    font-size:31px;
+    margin-bottom:40px;
+  }
+
+  .form-group{
+    margin-bottom:27px;
+  }
+
+  .form-label{
+    font-size:20px;
+    margin-bottom:12px;
+  }
+
+  .form-input{
+    height:75px;
+    border-radius:15px;
+    padding:0 22px;
+    font-size:18px;
+  }
+
+  .generate-btn{
+    height:82px;
+    border-radius:15px;
+    font-size:21px;
+  }
+
+  .result-box{
+    padding:22px;
+    margin-top:28px;
+  }
+
+  .result-title{
+    font-size:23px;
+  }
+
+  .generated-link{
+    min-height:180px;
+    font-size:16px;
+  }
+
+  .copy-btn{
+    width:100%;
+    font-size:18px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media(max-width:380px){
+
+  .generator-card{
+    padding:30px 18px 25px;
+  }
+
+  .title{
+    font-size:27px;
+  }
+
+  .form-label{
+    font-size:18px;
+  }
+
+  .form-input{
+    font-size:16px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="container">
+
+  <div class="generator-card">
+
+
+    <!-- =================================================
+         TITLE
+    ================================================= -->
+
+    <h1 class="title">
+      Sub4Unlock Link Generator
+    </h1>
+
+
+    <!-- =================================================
+         YOUTUBE
+    ================================================= -->
+
+    <div class="form-group">
+
+      <label
+        class="form-label"
+        for="youtube"
+      >
+        YouTube Channel Link:
+      </label>
+
+      <input
+        id="youtube"
+        class="form-input"
+        type="url"
+        value="https://youtube.com/@mugenbd"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <!-- =================================================
+         TELEGRAM
+    ================================================= -->
+
+    <div class="form-group">
+
+      <label
+        class="form-label"
+        for="telegram"
+      >
+        Telegram Link:
+      </label>
+
+      <input
+        id="telegram"
+        class="form-input"
+        type="url"
+        value="https://t.me/MugenBD"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <!-- =================================================
+         DESTINATION
+    ================================================= -->
+
+    <div class="form-group">
+
+      <label
+        class="form-label"
+        for="destination"
+      >
+        Destination Link (ফাইল বা মূল ডাউনলোড লিংক):
+      </label>
+
+      <input
+        id="destination"
+        class="form-input"
+        type="url"
+        placeholder="https://drive.google.com/... বা যেকোনো লিংক"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <!-- =================================================
+         GENERATE BUTTON
+    ================================================= -->
+
+    <button
+      id="generateBtn"
+      class="generate-btn"
+      type="button"
+    >
+      Generate Unlock Link
+    </button>
+
+
+    <!-- =================================================
+         ERROR
+    ================================================= -->
+
+    <div
+      id="error"
+      class="error"
+    ></div>
+
+
+    <!-- =================================================
+         RESULT
+    ================================================= -->
+
+    <div
+      id="resultBox"
+      class="result-box"
+    >
+
+      <div class="result-title">
+        Your Generated Link:
+      </div>
+
+      <textarea
+        id="generatedLink"
+        class="generated-link"
+        readonly
+      ></textarea>
+
+      <button
+        id="copyBtn"
+        class="copy-btn"
+        type="button"
+      >
+        Copy Link
+      </button>
+
+    </div>
+
+
+  </div>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const youtubeInput =
+  document.getElementById("youtube");
+
+const telegramInput =
+  document.getElementById("telegram");
+
+const destinationInput =
+  document.getElementById("destination");
+
+const generateBtn =
+  document.getElementById("generateBtn");
+
+const resultBox =
+  document.getElementById("resultBox");
+
+const generatedLink =
+  document.getElementById("generatedLink");
+
+const copyBtn =
+  document.getElementById("copyBtn");
+
+const errorBox =
+  document.getElementById("error");
+
+
+/* =====================================================
+   SHOW ERROR
+===================================================== */
+
+function showError(message){
+
+  errorBox.textContent =
+    message;
+
+  errorBox.style.display =
+    "block";
+
+}
+
+
+/* =====================================================
+   HIDE ERROR
+===================================================== */
+
+function hideError(){
+
+  errorBox.style.display =
+    "none";
+
+}
+
+
+/* =====================================================
+   BASE64 UTF-8 ENCODE
+===================================================== */
+
+function encodeData(data){
+
+  const json =
+    JSON.stringify(data);
+
+  const bytes =
+    new TextEncoder().encode(json);
+
+  let binary = "";
+
+  bytes.forEach(function(byte){
+
+    binary += String.fromCharCode(byte);
+
+  });
+
+  return btoa(binary);
+
+}
+
+
+/* =====================================================
+   GENERATE LINK
+===================================================== */
+
+generateBtn.addEventListener(
+  "click",
+  function(){
+
+    hideError();
+
+
+    const youtube =
+      youtubeInput.value.trim();
+
+    const telegram =
+      telegramInput.value.trim();
+
+    const destination =
+      destinationInput.value.trim();
+
+
+    /* ================================================
+       VALIDATION
+    ================================================ */
+
+    if(!youtube){
+
+      showError(
+        "Please enter your YouTube Channel link."
+      );
+
+      youtubeInput.focus();
+
+      return;
+
+    }
+
+
+    if(!telegram){
+
+      showError(
+        "Please enter your Telegram link."
+      );
+
+      telegramInput.focus();
+
+      return;
+
+    }
+
+
+    if(!destination){
+
+      showError(
+        "Please enter your Destination link."
+      );
+
+      destinationInput.focus();
+
+      return;
+
+    }
+
+
+    /* ================================================
+       URL VALIDATION
+    ================================================ */
+
+    try{
+
+      new URL(youtube);
+
+    }catch{
+
+      showError(
+        "Please enter a valid YouTube URL."
+      );
+
+      youtubeInput.focus();
+
+      return;
+
+    }
+
+
+    try{
+
+      new URL(telegram);
+
+    }catch{
+
+      showError(
+        "Please enter a valid Telegram URL."
+      );
+
+      telegramInput.focus();
+
+      return;
+
+    }
+
+
+    try{
+
+      new URL(destination);
+
+    }catch{
+
+      showError(
+        "Please enter a valid Destination URL."
+      );
+
+      destinationInput.focus();
+
+      return;
+
+    }
+
+
+    /* ================================================
+       DATA
+    ================================================ */
+
+    const data = {
+
+      youtube: youtube,
+
+      telegram: telegram,
+
+      destination: destination
+
+    };
+
+
+    /* ================================================
+       ENCODE DATA
+    ================================================ */
+
+    const encodedData =
+      encodeData(data);
+
+
+    /* ================================================
+       FINAL LINK
+    ================================================ */
+
+    const baseUrl =
+      window.location.origin +
+      "/sub2unlock/";
+
+
+    const finalLink =
+      baseUrl +
+      "?data=" +
+      encodeURIComponent(encodedData);
+
+
+    /* ================================================
+       SHOW RESULT
+    ================================================ */
+
+    generatedLink.value =
+      finalLink;
+
+    resultBox.style.display =
+      "block";
+
+
+    /* ================================================
+       SCROLL TO RESULT
+    ================================================ */
+
+    setTimeout(function(){
+
+      resultBox.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },100);
+
+  }
+);
+
+
+/* =====================================================
+   COPY LINK
+===================================================== */
+
+copyBtn.addEventListener(
+  "click",
+  async function(){
+
+    const link =
+      generatedLink.value.trim();
+
+    if(!link) return;
+
+
+    try{
+
+      await navigator.clipboard.writeText(link);
+
+      copyBtn.textContent =
+        "✓ Link Copied!";
+
+      copyBtn.classList.add(
+        "copied"
+      );
+
+
+      setTimeout(function(){
+
+        copyBtn.textContent =
+          "Copy Link";
+
+        copyBtn.classList.remove(
+          "copied"
+        );
+
+      },2000);
+
+
+    }catch{
+
+      generatedLink.select();
+
+      document.execCommand(
+        "copy"
+      );
+
+      copyBtn.textContent =
+        "✓ Link Copied!";
+
+      setTimeout(function(){
+
+        copyBtn.textContent =
+          "Copy Link";
+
+      },2000);
+
+    }
+
+  }
+);
+
+</script>
+
+
+</body>
+
+  </html>
