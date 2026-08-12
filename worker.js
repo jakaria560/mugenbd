@@ -634,7 +634,7 @@ body{
 <header class="header">
 
 <div class="logo">
-MugenBD 🔗
+<font size='3'> MugenBD 🎮 </font>
 </div>
 
 </header>
