@@ -663,44 +663,11 @@ MugenBD • Anime Guide
 </div>
 
 
-<!-- =====================================================
-     AD #1 — 300x250
-===================================================== -->
 
-<div class="ad-box">
-
-<div class="ad-300">
-
-<script>
-
-atOptions = {
-
-  'key':
-  '0dfcd9d1378790bebfaf30f6b4efb71d',
-
-  'format':'iframe',
-
-  'height':250,
-
-  'width':300,
-
-  'params':{}
-
-};
-
-</script>
-
-<script
-src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invoke.js">
-</script>
-
-</div>
-
-</div>
 
 
 <!-- =====================================================
-     FIRST GATE
+     FIRST GATE LINK
 ===================================================== -->
 
 <div
@@ -742,6 +709,49 @@ Please wait <b>10</b> seconds...
 </div>
 
 </div>
+
+
+
+
+
+
+<!-- =====================================================
+     AD #1 — 300x250
+===================================================== -->
+
+<div class="ad-box">
+
+<div class="ad-300">
+
+<script>
+
+atOptions = {
+
+  'key':
+  '0dfcd9d1378790bebfaf30f6b4efb71d',
+
+  'format':'iframe',
+
+  'height':250,
+
+  'width':300,
+
+  'params':{}
+
+};
+
+</script>
+
+<script
+src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invoke.js">
+</script>
+
+</div>
+
+</div>
+
+
+
 
 
 <!-- =====================================================
