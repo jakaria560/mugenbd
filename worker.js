@@ -710,13 +710,15 @@ src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invo
 
 <div class="unlock-title">
 
-🔐 Continue to Article
+🔐 Continue to Link
 
 </div>
 
 <div class="unlock-text">
 
-Click Continue and wait 10 seconds.
+Click Get Link and wait 10 seconds.
+<br>
+👇👇
 
 </div>
 
@@ -726,7 +728,7 @@ Click Continue and wait 10 seconds.
   type="button"
 >
 
-Continue
+Get Link
 
 </button>
 
