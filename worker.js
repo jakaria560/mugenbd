@@ -372,7 +372,7 @@ body{
 .header{
   background:#090304;
   color:#fff;
-  padding:22px 15px;
+  padding:15px 12px;
   text-align:center;
 }
 
