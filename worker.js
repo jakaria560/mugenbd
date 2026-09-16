@@ -666,6 +666,43 @@ MugenBD • Anime Guide
 
 
 
+/* =====================================================
+   Progress Text
+===================================================== */
+<div class="progress-bar">
+    Progress 1/3
+</div>
+
+<style>
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 42px;
+    background: #000;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+
+    z-index: 999999;
+}
+</style>
+
+
+
+
+
+
+
 <!-- =====================================================
      FIRST GATE LINK
 ===================================================== -->
