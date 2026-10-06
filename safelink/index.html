@@ -86,43 +86,53 @@ body{
 
 
 /* =====================================================
-   AD
+   RESPONSIVE AD
 ===================================================== */
 
 .ad-box{
   width:100%;
-  min-height:250px;
   display:flex;
   justify-content:center;
   align-items:center;
   overflow:hidden;
   margin:18px auto;
+  box-sizing:border-box;
 }
 
-.ad-inner{
-  width:300px;
-  max-width:100%;
-  min-height:250px;
-  overflow:hidden;
-}
+/* 300x250 ads */
 .ad-300{
   width:300px;
   max-width:100%;
   min-height:250px;
   overflow:hidden;
+  box-sizing:border-box;
 }
 
+/* 728x90 responsive banner */
 .ad-728{
   width:100%;
   max-width:728px;
-  min-height:90px;
+  aspect-ratio:728 / 90;
   overflow:hidden;
+  box-sizing:border-box;
 }
 
+/* Inner banner */
 .ad-728-inner{
   width:100%;
+  height:100%;
   max-width:728px;
   overflow:hidden;
+  box-sizing:border-box;
+}
+
+/* Make injected iframe responsive */
+.ad-728-inner iframe{
+  width:100% !important;
+  max-width:100% !important;
+  height:100% !important;
+  border:0;
+  display:block;
 }
   
 
@@ -412,9 +422,8 @@ body{
 
 <div class="ad-box">
 
-<div class="ad-728">
-
-<div class="ad-728-inner">
+    <div class="ad-728">
+        <div class="ad-728-inner">
 
 <script>
 
