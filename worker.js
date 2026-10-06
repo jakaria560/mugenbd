@@ -634,7 +634,7 @@ body{
 <header class="header">
 
 <div class="logo">
-<font size='3'> Progress 1/2 </font>
+<font size='3'> Progress 1/3 </font>
 </div>
 
 </header>
