@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Top 25 Anime You Should Watch | MugenBD</title>
 <meta name="description" content="A fresh guide to 25 anime series and films worth watching, from long-running adventures to short emotional stories.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --bg:#f1f3fa;
@@ -19,55 +22,402 @@
     --border:#e3e6f0;
     --box:#f7f8fc;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
+
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+
+  html{
+    -webkit-text-size-adjust:100%;
+  }
+
   body{
     font-family:'Roboto',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.8;
     font-size:16px;
-      <li><strong>My Hero Academia</strong><span>In a world where most people have special powers, Izuku Midoriya begins as a powerless boy and trains to become a top hero.</span></li>
-      <li><strong>One Punch Man</strong><span>Saitama can defeat any enemy with a single punch, and his search for a worthy opponent makes for a funny and exciting parody of superhero stories.</span></li>
-      <li><strong>Code Geass</strong><span>An exiled prince gains a mysterious power and leads a rebellion against a powerful empire, using strategy as his main weapon.</span></li>
-      <li><strong>Vinland Saga</strong><span>A young Viking warrior searches for meaning and revenge, and slowly discovers what it truly means to live without violence.</span></li>
-      <li><strong>Mob Psycho 100</strong><span>A shy middle school boy with huge psychic power tries to live a normal life while learning to manage his emotions.</span></li>
-      <li><strong>Your Name</strong><span>Two teenagers who have never met begin swapping bodies, and a touching romance unfolds across time and distance.</span></li>
-      <li><strong>A Silent Voice</strong><span>A former bully tries to make amends with a deaf classmate he once hurt, in a gentle story about guilt, forgiveness and friendship.</span></li>
-      <li><strong>Spy x Family</strong><span>A spy, an assassin and a telepathic girl pretend to be an ordinary family, and each secretly hides who they really are.</span></li>
-      <li><strong>Haikyu!!</strong><span>A short but determined boy joins a high school volleyball team and shows that passion and teamwork can beat natural talent.</span></li>
-      <li><strong>Violet Evergarden</strong><span>A former soldier writes letters for other people and slowly learns to understand human feelings in this beautifully animated drama.</span></li>
-      <li><strong>Dragon Ball Z</strong><span>Goku and his friends defend Earth against powerful enemies in one of the classic anime that shaped the entire genre.</span></li>
-      <li><strong>Bleach</strong><span>Ichigo Kurosaki gains the powers of a Soul Reaper and protects the living from evil spirits while exploring the world of the dead.</span></li>
-      <li><strong>Chainsaw Man</strong><span>Denji, a poor young man in heavy debt, merges with a chainsaw devil and joins a group that hunts dangerous devils.</span></li>
-      <li><strong>Frieren: Beyond Journey's End</strong><span>After the hero's party defeats the Demon King, an elf mage looks back on her long life and learns to value the short time humans have.</span></li>
-      <li><strong>Neon Genesis Evangelion</strong><span>Teenage pilots control giant machines to stop mysterious beings, in a deep and psychological story that changed anime forever.</span></li>
+  }
+
+  .container{
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+    padding:24px 16px;
+  }
+
+  .article-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:clamp(20px,5vw,42px);
+    box-shadow:0 8px 30px rgba(31,41,55,.05);
+  }
+
+  .article-header{
+    margin-bottom:28px;
+  }
+
+  .site-name{
+    display:inline-block;
+    margin-bottom:12px;
+    color:var(--accent);
+    font-size:14px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+
+  h1,h2,h3{
+    color:var(--heading);
+    line-height:1.35;
+  }
+
+  h1{
+    font-size:clamp(28px,5vw,40px);
+    margin-bottom:14px;
+  }
+
+  h2{
+    font-size:clamp(22px,4vw,28px);
+    margin:32px 0 14px;
+  }
+
+  .intro{
+    color:var(--muted);
+    font-size:17px;
+  }
+
+  p{
+    margin:0 0 18px;
+  }
+
+  .anime-list{
+    padding-left:25px;
+    margin:20px 0;
+  }
+
+  .anime-list li{
+    padding-left:5px;
+    margin-bottom:20px;
+  }
+
+  .anime-list li::marker{
+    color:var(--accent);
+    font-weight:700;
+  }
+
+  .anime-list strong{
+    display:block;
+    color:var(--heading);
+    font-size:17px;
+    margin-bottom:3px;
+  }
+
+  .anime-list span{
+    display:block;
+  }
+
+  .end-box{
+    margin:30px 0;
+    padding:22px;
+    background:var(--box);
+    border:1px solid var(--border);
+    border-radius:12px;
+    text-align:center;
+    color:var(--muted);
+  }
+
+  @media(max-width:600px){
+    .container{
+      padding:12px 10px;
+    }
+
+    .article-card{
+      padding:22px 17px;
+      border-radius:12px;
+    }
+
+    body{
+      font-size:15px;
+    }
+
+    .intro{
+      font-size:16px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<main class="container">
+  <article class="article-card">
+
+    <header class="article-header">
+      <span class="site-name">MugenBD Anime Guide</span>
+
+      <h1>Top 25 Anime You Should Watch</h1>
+
+      <p class="intro">
+        Looking for your next favorite anime? From unforgettable action
+        adventures to emotional films and clever comedies, here are 25
+        anime series and movies worth adding to your watchlist.
+      </p>
+    </header>
+
+    <p>
+      Anime offers something for almost every kind of viewer. Some stories
+      deliver spectacular battles and powerful heroes, while others explore
+      friendship, personal growth, romance and the meaning of life.
+      This list brings together popular classics and newer favorites
+      to help you decide what to watch next.
+    </p>
+
+    <h2>25 Anime Recommendations</h2>
+
+    <ol class="anime-list">
+      <li>
+        <strong>Naruto</strong>
+        <span>
+          Naruto Uzumaki dreams of becoming the Hokage and earning the
+          respect of his village. His journey is filled with friendship,
+          rivalry, emotional moments and unforgettable ninja battles.
+        </span>
+      </li>
+
+      <li>
+        <strong>One Piece</strong>
+        <span>
+          Monkey D. Luffy and his pirate crew travel across dangerous seas
+          in search of the legendary One Piece treasure. The series combines
+          adventure, comedy, emotional storytelling and creative battles.
+        </span>
+      </li>
+
+      <li>
+        <strong>Attack on Titan</strong>
+        <span>
+          Humanity fights for survival behind enormous walls while terrifying
+          Titans threaten its existence. As the mystery unfolds, the story
+          explores freedom, sacrifice and the cost of war.
+        </span>
+      </li>
+
+      <li>
+        <strong>Death Note</strong>
+        <span>
+          Light Yagami discovers a mysterious notebook that can kill anyone
+          whose name is written in it. His attempt to reshape the world
+          leads to a tense battle of intelligence with detective L.
+        </span>
+      </li>
+
+      <li>
+        <strong>Demon Slayer</strong>
+        <span>
+          Tanjiro Kamado becomes a demon slayer after a tragedy strikes
+          his family. He sets out to protect others and find a way to
+          turn his sister Nezuko back into a human.
+        </span>
+      </li>
+
+      <li>
+        <strong>Jujutsu Kaisen</strong>
+        <span>
+          Yuji Itadori enters the dangerous world of curses after swallowing
+          a powerful cursed object. He trains alongside sorcerers while
+          facing terrifying enemies and difficult choices.
+        </span>
+      </li>
+
+      <li>
+        <strong>Fullmetal Alchemist: Brotherhood</strong>
+        <span>
+          Brothers Edward and Alphonse Elric search for the Philosopher's
+          Stone after a failed alchemy experiment costs them dearly.
+          Their journey combines action, mystery and powerful themes
+          of family and sacrifice.
+        </span>
+      </li>
+
+      <li>
+        <strong>Hunter x Hunter</strong>
+        <span>
+          Gon Freecss becomes a Hunter to find his missing father.
+          Along the way, he makes close friends, faces dangerous challenges
+          and discovers a world full of extraordinary abilities.
+        </span>
+      </li>
+
+      <li>
+        <strong>My Hero Academia</strong>
+        <span>
+          In a world where most people have special powers, Izuku Midoriya
+          begins as a powerless boy and trains to become a top hero.
+        </span>
+      </li>
+
+      <li>
+        <strong>One Punch Man</strong>
+        <span>
+          Saitama can defeat any enemy with a single punch, and his search
+          for a worthy opponent makes for a funny and exciting parody
+          of superhero stories.
+        </span>
+      </li>
+
+      <li>
+        <strong>Code Geass</strong>
+        <span>
+          An exiled prince gains a mysterious power and leads a rebellion
+          against a powerful empire, using strategy as his main weapon.
+        </span>
+      </li>
+
+      <li>
+        <strong>Vinland Saga</strong>
+        <span>
+          A young Viking warrior searches for meaning and revenge, and
+          slowly discovers what it truly means to live without violence.
+        </span>
+      </li>
+
+      <li>
+        <strong>Mob Psycho 100</strong>
+        <span>
+          A shy middle school boy with huge psychic power tries to live
+          a normal life while learning to manage his emotions.
+        </span>
+      </li>
+
+      <li>
+        <strong>Your Name</strong>
+        <span>
+          Two teenagers who have never met begin swapping bodies, and a
+          touching romance unfolds across time and distance.
+        </span>
+      </li>
+
+      <li>
+        <strong>A Silent Voice</strong>
+        <span>
+          A former bully tries to make amends with a deaf classmate he
+          once hurt, in a gentle story about guilt, forgiveness and friendship.
+        </span>
+      </li>
+
+      <li>
+        <strong>Spy x Family</strong>
+        <span>
+          A spy, an assassin and a telepathic girl pretend to be an ordinary
+          family, and each secretly hides who they really are.
+        </span>
+      </li>
+
+      <li>
+        <strong>Haikyu!!</strong>
+        <span>
+          A short but determined boy joins a high school volleyball team
+          and shows that passion and teamwork can beat natural talent.
+        </span>
+      </li>
+
+      <li>
+        <strong>Violet Evergarden</strong>
+        <span>
+          A former soldier writes letters for other people and slowly learns
+          to understand human feelings in this beautifully animated drama.
+        </span>
+      </li>
+
+      <li>
+        <strong>Dragon Ball Z</strong>
+        <span>
+          Goku and his friends defend Earth against powerful enemies in one
+          of the classic anime that shaped the entire genre.
+        </span>
+      </li>
+
+      <li>
+        <strong>Bleach</strong>
+        <span>
+          Ichigo Kurosaki gains the powers of a Soul Reaper and protects
+          the living from evil spirits while exploring the world of the dead.
+        </span>
+      </li>
+
+      <li>
+        <strong>Chainsaw Man</strong>
+        <span>
+          Denji, a poor young man in heavy debt, merges with a chainsaw
+          devil and joins a group that hunts dangerous devils.
+        </span>
+      </li>
+
+      <li>
+        <strong>Frieren: Beyond Journey's End</strong>
+        <span>
+          After the hero's party defeats the Demon King, an elf mage looks
+          back on her long life and learns to value the short time humans have.
+        </span>
+      </li>
+
+      <li>
+        <strong>Neon Genesis Evangelion</strong>
+        <span>
+          Teenage pilots control giant machines to stop mysterious beings,
+          in a deep and psychological story that changed anime forever.
+        </span>
+      </li>
+
+      <li>
+        <strong>Tokyo Ghoul</strong>
+        <span>
+          College student Ken Kaneki finds himself caught between the human
+          world and the world of flesh-eating ghouls after a life-changing
+          encounter.
+        </span>
+      </li>
+
+      <li>
+        <strong>Steins;Gate</strong>
+        <span>
+          A group of friends discovers a way to send messages into the past.
+          Their experiments lead to unexpected consequences and a gripping
+          story about time, choices and sacrifice.
+        </span>
+      </li>
     </ol>
 
-    <p>Every viewer has different tastes, so treat this list as a starting point instead of a strict ranking. Start with one or two titles that sound interesting, and you will probably find your next favorite along the way.</p>
+    <p>
+      Every viewer has different tastes, so treat this list as a starting
+      point instead of a strict ranking. Start with one or two titles that
+      sound interesting, and you will probably find your next favorite
+      along the way.
+    </p>
 
-
-
-
-
-
-    
     <div class="end-box">
-
-    ✌️ Ad code here
-
-    
+      ✌️ Ad code here
     </div>
 
+    <h2>Final Thoughts</h2>
 
+    <p>
+      Anime offers countless stories, characters and adventures for every
+      type of viewer. Whether you enjoy action, fantasy, comedy or emotional
+      stories, there is always something new to discover.
+    </p>
 
-    
-      <p>Anime offers countless stories, characters and adventures for every type of viewer.</p>
-      <p>Whether you enjoy action, fantasy, comedy or emotional stories, there is always something new to discover.</p>
-    
+    <p>
+      Save this list, explore the titles that interest you most, and enjoy
+      your next anime adventure.
+    </p>
+
   </article>
 </main>
 
 </body>
-    </html>
-  
+</html>
