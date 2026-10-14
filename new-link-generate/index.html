@@ -1,198 +1,390 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#4053b5">
-<title>MugenBD 🔗 Generate Link</title>
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
-body{background:#fff;color:#fff}
-.generator{width:100%;background:#4053b5;padding:42px 7.3% 72px;min-height:555px}
-.brand{font-size:clamp(30px,6vw,48px);font-weight:700;line-height:1.25;margin:0 0 76px;letter-spacing:-1.1px}
-.brand span{margin-left:6px}
-h1{text-align:center;font-size:clamp(27px,5.5vw,48px);line-height:1.2;margin:0 0 54px;font-weight:700}
-.input-row{display:flex;width:100%;height:108px;border-radius:15px;overflow:hidden;box-shadow:0 3px 8px #273b8a30}
-.input-row input{flex:1;min-width:0;border:0;outline:0;background:#fff;color:#333;font-size:clamp(17px,3.6vw,29px);padding:0 22px}
-.input-row input::placeholder{color:#999;opacity:1}
-.submit{flex:0 0 34%;border:0;background:#f42d83;color:#fff;font-size:clamp(18px,3.7vw,29px);padding:0 10px;cursor:pointer}
-.submit:active,.copy:active{filter:brightness(.94)}
-.more-fields{display:none;margin-top:22px}
-.more-fields.show{display:block}
-.field-label{display:block;color:#fff;font-size:19px;font-weight:600;margin:18px 0 9px}
-.more-fields input,.more-fields textarea{display:block;width:100%;border:0;border-radius:12px;background:#fff;color:#333;font:18px Arial;padding:16px}
-.more-fields input{height:62px}
-.more-fields textarea{min-height:140px;resize:vertical;line-height:1.5}
-.more-fields input::placeholder,.more-fields textarea::placeholder{color:#999}
-.result{display:none;margin-top:40px}
-.result.show{display:block}
-.result-row{height:108px;display:flex;overflow:hidden;border-radius:14px;border:1px solid #b6d8b2;background:#fff;color:#555;box-shadow:0 1px 3px #1e2d5c1c}
-.result-label{display:flex;align-items:center;justify-content:center;flex:0 0 32%;background:#e0f5dc;color:#5b8058;font-size:clamp(16px,3.7vw,27px);padding:8px}
-.result-url{display:flex;align-items:center;white-space:nowrap;overflow-x:auto;flex:1;min-width:0;padding:0 26px;font-size:clamp(16px,3.5vw,27px);scrollbar-width:none}
-.copy-wrap{text-align:center;margin-top:32px}
-.copy{min-height:90px;min-width:259px;padding:15px 30px;border:0;border-radius:12px;background:#4cbd59;color:#fff;font-size:clamp(20px,3.8vw,29px);cursor:pointer}
-.message{text-align:center;font-size:14px;min-height:18px;margin:13px 0 0;color:#fff;overflow-wrap:anywhere}
-.error{display:none;color:#fff;background:#b82654;border-radius:9px;padding:10px 13px;margin-top:15px;font-size:14px;line-height:1.5}
-.error.show{display:block}
-.below{height:300px;background:#fff}
-@media(max-width:520px){
- .generator{padding:39px 7.3% 72px;min-height:555px}
- .brand{margin-bottom:76px}
- h1{margin-bottom:54px}
- .input-row{height:108px}
- .input-row input{padding:0 21px}
- .submit{flex-basis:34%;padding:0 5px}
- .result-row{height:108px}
- .result-label{flex-basis:32%;font-size:clamp(15px,3.6vw,22px)}
- .result-url{padding:0 26px}
- .copy{min-width:259px;min-height:90px}
-}
-@media(max-width:370px){
- .generator{padding-left:5%;padding-right:5%}
- .input-row input{font-size:16px;padding:0 12px}
- .submit{font-size:17px}
- .result-label{flex-basis:34%}
- .result-url{padding:0 14px;font-size:15px}
- .copy{min-width:220px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101a35">
+  <title>Generate Link | MugenBD</title>
+
+  <style>
+    :root {
+      --bg: #101a35;
+      --card: #ffffff;
+      --accent: #ff4f87;
+      --green: #16a765;
+      --text: #172033;
+      --muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 25px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, #253d70 0, transparent 42%),
+        linear-gradient(145deg, #101a35, #080d1c);
+      color: white;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 540px;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .brand h1 {
+      margin: 0 0 8px;
+      font-size: clamp(30px, 7vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .brand h1 span {
+      color: #ffb400;
+    }
+
+    .brand p {
+      margin: 0;
+      color: #bdc8df;
+      font-size: 14px;
+    }
+
+    .card {
+      padding: 26px;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 23px;
+    }
+
+    .description {
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 9px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid #dce1eb;
+      border-radius: 11px;
+      outline: none;
+      background: #f8faff;
+      color: #172033;
+      font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      border-color: #647eea;
+      box-shadow: 0 0 0 3px rgba(100, 126, 234, 0.12);
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 11px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .generate-btn {
+      color: white;
+      background: linear-gradient(135deg, #ff4f87, #ed3672);
+      box-shadow: 0 7px 18px rgba(255, 79, 135, 0.22);
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      padding-top: 22px;
+      border-top: 1px solid #e9edf4;
+    }
+
+    .result h3 {
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: 18px;
+    }
+
+    .result-url {
+      padding: 13px;
+      margin-bottom: 12px;
+      overflow-wrap: anywhere;
+      border: 1px solid #bdebd2;
+      border-radius: 10px;
+      background: #f0fff6;
+      color: #087944;
+      font-size: 13px;
+      line-height: 1.6;
+      user-select: text;
+    }
+
+    .copy-btn {
+      color: white;
+      background: var(--green);
+    }
+
+    .open-btn {
+      margin-top: 10px;
+      color: #273a69;
+      background: #edf2ff;
+    }
+
+    .message {
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 9px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .error {
+      display: block;
+      color: #b42318;
+      background: #fff0ee;
+    }
+
+    .success {
+      display: block;
+      color: #087944;
+      background: #eafbf1;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #9ba9c5;
+      font-size: 12px;
+    }
+
+    .footer a {
+      color: #ffb400;
+      text-decoration: none;
+    }
+
+    @media (max-width: 420px) {
+      .card {
+        padding: 21px 17px;
+      }
+
+      .card h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<section class="generator">
-  <div class="brand">MugenBD <span>🔗</span></div>
-  <h1>🛡️ Generate Link</h1>
+  <main class="container">
 
-  <form id="form" novalidate>
-    <div class="input-row">
-      <input id="destination" type="url" placeholder="Your Link here using http://" aria-label="Final Destination URL" autocomplete="url" required>
-      <button class="submit" id="submit" type="submit">🛡️ Submit</button>
-    </div>
+    <header class="brand">
+      <h1>Mugen<span>BD</span> 🔗</h1>
+      <p>Simple Link Generator for Your Downloads</p>
+    </header>
 
-    <div class="more-fields" id="moreFields">
-      <label class="field-label" for="title">Article Title</label>
-      <input id="title" type="text" maxlength="180" placeholder="Enter your article title">
+    <section class="card">
+      <h2>🛡️ Generate Link</h2>
+      <p class="description">
+        Enter your destination URL to create a shareable link.
+        Every generated link will use the same article page.
+      </p>
 
-      <label class="field-label" for="content">Article Content</label>
-      <textarea id="content" placeholder="Write your article here..."></textarea>
-    </div>
-    <div class="error" id="error" role="alert"></div>
-  </form>
+      <form id="generatorForm">
+        <label for="destinationUrl">Final Destination URL</label>
 
-  <section class="result" id="result" aria-live="polite">
-    <div class="result-row">
-      <div class="result-label">Result: ✔️</div>
-      <div class="result-url" id="generatedUrl"></div>
-    </div>
-    <div class="copy-wrap">
-      <button class="copy" id="copy" type="button">▣ Copy URL</button>
-      <div class="message" id="message" role="status"></div>
-    </div>
-  </section>
-</section>
-<div class="below"></div>
+        <input
+          type="url"
+          id="destinationUrl"
+          placeholder="https://example.com/your-game.apk"
+          autocomplete="url"
+          inputmode="url"
+          required
+        >
 
-<script>
-(() => {
-  const form = document.getElementById('form');
-  const destination = document.getElementById('destination');
-  const moreFields = document.getElementById('moreFields');
-  const title = document.getElementById('title');
-  const content = document.getElementById('content');
-  const error = document.getElementById('error');
-  const result = document.getElementById('result');
-  const generatedUrl = document.getElementById('generatedUrl');
-  const message = document.getElementById('message');
-  const submit = document.getElementById('submit');
-  const copy = document.getElementById('copy');
-  let detailsVisible = false;
-  let currentUrl = '';
+        <button class="generate-btn" type="submit">
+          🛡️ Generate Link
+        </button>
+      </form>
 
-  function showError(text) {
-    error.textContent = text;
-    error.classList.add('show');
-  }
-  function encodePayload(value) {
-    const bytes = new TextEncoder().encode(JSON.stringify(value));
-    let binary = '';
-    for (let i = 0; i < bytes.length; i += 0x8000) {
-      binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-    }
-    return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
-  }
+      <div class="result" id="result">
+        <h3>Result: ✔️</h3>
 
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    error.classList.remove('show');
-    message.textContent = '';
+        <div class="result-url" id="generatedUrl"></div>
 
-    const destinationValue = destination.value.trim();
-    let parsed;
-    try { parsed = new URL(destinationValue); } catch (_) {}
-    if (!parsed || !['http:', 'https:'].includes(parsed.protocol)) {
-      showError('Please enter a valid destination URL starting with http:// or https://.');
-      destination.focus();
-      return;
-    }
+        <button class="copy-btn" id="copyBtn" type="button">
+          ▣ Copy URL
+        </button>
 
-    // First submit reveals the article fields; second submit creates the shareable URL.
-    if (!detailsVisible) {
-      detailsVisible = true;
-      moreFields.classList.add('show');
-      submit.textContent = '🛡️ Generate';
-      title.focus();
-      moreFields.scrollIntoView({behavior:'smooth', block:'nearest'});
-      return;
+        <button class="open-btn" id="openBtn" type="button">
+          ↗ Open Generated Link
+        </button>
+
+        <div class="message" id="message" role="status"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © <span id="year"></span>
+      <a href="https://mugenbd.com/">MugenBD</a>.
+      All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    "use strict";
+
+    const form = document.getElementById("generatorForm");
+    const destinationInput = document.getElementById("destinationUrl");
+    const result = document.getElementById("result");
+    const generatedUrlBox = document.getElementById("generatedUrl");
+    const copyBtn = document.getElementById("copyBtn");
+    const openBtn = document.getElementById("openBtn");
+    const message = document.getElementById("message");
+
+    // The single, fixed article page for every generated link.
+    const ARTICLE_PAGE = "https://mugenbd.com/article/index.html";
+
+    let generatedUrl = "";
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = "message " + type;
     }
 
-    const titleValue = title.value.trim();
-    const contentValue = content.value.trim();
-    if (!titleValue) {
-      showError('Please enter an Article Title.');
-      title.focus();
-      return;
-    }
-    if (!contentValue) {
-      showError('Please enter the Article Content.');
-      content.focus();
-      return;
-    }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    const payload = { title: titleValue, content: contentValue, destination: destinationValue, version: 1 };
-    const encoded = encodePayload(payload);
+      const rawUrl = destinationInput.value.trim();
 
-    // article/index.html is the planned public article page in the same GitHub Pages site.
-    const articleUrl = new URL('../article/', new URL(window.location.href));
-    articleUrl.search = '';
-    articleUrl.hash = '';
-    articleUrl.searchParams.set('data', encoded);
-    currentUrl = articleUrl.href;
+      let destination;
 
-    generatedUrl.textContent = currentUrl;
-    result.classList.add('show');
-    message.textContent = 'Link generated successfully.';
-    submit.textContent = '🛡️ Generate';
-    result.scrollIntoView({behavior:'smooth', block:'nearest'});
-  });
+      try {
+        destination = new URL(rawUrl);
+      } catch {
+        showMessage("Please enter a valid destination URL.", "error");
+        result.style.display = "block";
+        return;
+      }
 
-  copy.addEventListener('click', async () => {
-    if (!currentUrl) return;
-    try {
-      await navigator.clipboard.writeText(currentUrl);
-      message.textContent = 'Copied!';
-    } catch (_) {
-      const area = document.createElement('textarea');
-      area.value = currentUrl;
-      area.style.position = 'fixed';
-      area.style.opacity = '0';
-      document.body.appendChild(area);
-      area.select();
-      const ok = document.execCommand('copy');
-      area.remove();
-      message.textContent = ok ? 'Copied!' : 'Copy failed. Please copy the URL manually.';
-    }
-  });
-})();
-</script>
+      if (
+        destination.protocol !== "https:" &&
+        destination.protocol !== "http:"
+      ) {
+        showMessage("Only HTTP and HTTPS links are allowed.", "error");
+        result.style.display = "block";
+        return;
+      }
+
+      // Pass the destination URL to the same article page.
+      const shareUrl = new URL(ARTICLE_PAGE);
+      shareUrl.searchParams.set("url", destination.href);
+
+      generatedUrl = shareUrl.href;
+
+      generatedUrlBox.textContent = generatedUrl;
+      result.style.display = "block";
+      message.className = "message";
+
+      copyBtn.textContent = "▣ Copy URL";
+
+      // Scroll to the result on mobile.
+      result.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    });
+
+    copyBtn.addEventListener("click", async function () {
+      if (!generatedUrl) return;
+
+      try {
+        await navigator.clipboard.writeText(generatedUrl);
+        copyBtn.textContent = "✔ Copied!";
+        showMessage("Generated link copied successfully!", "success");
+      } catch {
+        // Fallback for browsers that block clipboard access.
+        const textArea = document.createElement("textarea");
+        textArea.value = generatedUrl;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.select();
+
+        try {
+          const copied = document.execCommand("copy");
+
+          if (copied) {
+            copyBtn.textContent = "✔ Copied!";
+            showMessage("Generated link copied successfully!", "success");
+          } else {
+            showMessage(
+              "Copy failed. Please select and copy the URL manually.",
+              "error"
+            );
+          }
+        } catch {
+          showMessage(
+            "Copy failed. Please select and copy the URL manually.",
+            "error"
+          );
+        }
+
+        textArea.remove();
+      }
+    });
+
+    openBtn.addEventListener("click", function () {
+      if (!generatedUrl) return;
+
+      window.open(generatedUrl, "_blank", "noopener,noreferrer");
+    });
+  </script>
 </body>
-</html>
+ </html>
+ 
