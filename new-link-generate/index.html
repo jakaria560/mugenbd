@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4053b5">
+<title>MugenBD 🔗 Generate Link</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+  body{background:#fff;color:#fff}
+  .generator{width:100%;background:#4053b5;padding:42px 7.3% 72px;min-height:555px}
+  .brand{font-size:clamp(30px,6vw,48px);font-weight:700;line-height:1.25;margin:0 0 76px;letter-spacing:-1.1px}
+  .brand span{margin-left:6px}
+  h1{text-align:center;font-size:clamp(27px,5.5vw,48px);line-height:1.2;margin:0 0 54px;font-weight:700}
+  .input-row{display:flex;width:100%;height:108px;border-radius:15px;overflow:hidden;box-shadow:0 3px 8px #273b8a30}
+  .input-row input{flex:1;min-width:0;border:0;outline:0;background:#fff;color:#333;font-size:clamp(17px,3.6vw,29px);padding:0 22px}
+  .input-row input::placeholder{color:#999;opacity:1}
+  .submit{flex:0 0 34%;border:0;background:#f42d83;color:#fff;font-size:clamp(18px,3.7vw,29px);padding:0 10px;cursor:pointer}
+  .submit:active,.copy:active{filter:brightness(.94)}
+  .result{display:none;margin-top:40px}
+  .result.show{display:block}
+  .result-row{height:108px;display:flex;overflow:hidden;border-radius:14px;border:1px solid #b6d8b2;background:#fff;color:#555;box-shadow:0 1px 3px #1e2d5c1c}
+  .result-label{display:flex;align-items:center;justify-content:center;flex:0 0 32%;background:#e0f5dc;color:#5b8058;font-size:clamp(16px,3.7vw,27px);padding:8px}
+  .result-url{display:flex;align-items:center;white-space:nowrap;overflow-x:auto;flex:1;min-width:0;padding:0 26px;font-size:clamp(16px,3.5vw,27px);scrollbar-width:none}
+  .copy-wrap{text-align:center;margin-top:32px}
+  .copy{min-height:90px;min-width:259px;padding:15px 30px;border:0;border-radius:12px;background:#4cbd59;color:#fff;font-size:clamp(20px,3.8vw,29px);cursor:pointer}
+  .message{text-align:center;font-size:14px;min-height:18px;margin:13px 0 0;color:#fff}
+  .error{display:none;color:#fff;background:#b82654;border-radius:9px;padding:10px 13px;margin-top:15px;font-size:14px}
+  .error.show{display:block}
+  .below{height:300px;background:#fff}
+  @media(max-width:520px){
+    .generator{padding:39px 7.3% 72px;min-height:555px}
+    .brand{margin-bottom:76px}
+    h1{margin-bottom:54px}
+    .input-row{height:108px}
+    .input-row input{padding:0 21px}
+    .submit{flex-basis:34%;padding:0 5px}
+    .result-row{height:108px}
+    .result-label{flex-basis:32%;font-size:clamp(15px,3.6vw,22px)}
+    .result-url{padding:0 26px}
+    .copy{min-width:259px;min-height:90px}
+  }
+  @media(max-width:370px){
+    .generator{padding-left:5%;padding-right:5%}
+    .input-row input{font-size:16px;padding:0 12px}
+    .submit{font-size:17px}
+    .result-label{flex-basis:34%}
+    .result-url{padding:0 14px;font-size:15px}
+    .copy{min-width:220px}
+  }
+</style>
+</head>
+<body>
+<section class="generator">
+  <div class="brand">MugenBD <span>🔗</span></div>
+  <h1>🛡️ Generate Link</h1>
+  <form id="form">
+    <div class="input-row">
+      <input id="title" type="text" placeholder="Article Title" aria-label="Article Title" required>
+      <button class="submit" type="submit">🛡️ Submit</button>
+    </div>
+    <div class="error" id="error" role="alert"></div>
+    <div id="extraFields" style="display:none">
+      <label for="content" style="display:block;margin:20px 0 8px;font-size:17px">Article Content</label>
+      <textarea id="content" required placeholder="Write your article here..." style="display:block;width:100%;min-height:150px;border:0;border-radius:12px;padding:15px;font:16px Arial;resize:vertical"></textarea>
+      <label for="destination" style="display:block;margin:20px 0 8px;font-size:17px">Final Destination URL</label>
+      <input id="destination" type="url" required placeholder="https://example.com/your-link" style="display:block;width:100%;height:58px;border:0;border-radius:12px;padding:0 15px;font:16px Arial">
+    </div>
+  </form>
+  <section class="result" id="result" aria-live="polite">
+    <div class="result-row">
+      <div class="result-label">Result: ✔️</div>
+      <div class="result-url" id="generatedUrl"></div>
+    </div>
+    <div class="copy-wrap"><button class="copy" id="copy" type="button">▣ Copy URL</button><div class="message" id="message"></div></div>
+  </section>
+</section>
+<div class="below"></div>
+<script>
+(() => {
+  const form = document.getElementById('form');
+  const title = document.getElementById('title');
+  const extra = document.getElementById('extraFields');
+  const content = document.getElementById('content');
+  const destination = document.getElementById('destination');
+  const error = document.getElementById('error');
+  const result = document.getElementById('result');
+  const generatedUrl = document.getElementById('generatedUrl');
+  const message = document.getElementById('message');
+  const copy = document.getElementById('copy');
+  let generated = '';
+  let fieldsShown = false;
+
+  // First submit reveals the article fields; the next submit generates the link.
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    error.classList.remove('show');
+    if (!fieldsShown) {
+      fieldsShown = true;
+      extra.style.display = 'block';
+      title.setAttribute('placeholder', 'Article Title');
+      content.focus();
+      extra.scrollIntoView({behavior:'smooth', block:'nearest'});
+      return;
+    }
+    const t = title.value.trim();
+    const c = content.value.trim();
+    const d = destination.value.trim();
+    let parsed;
+    try { parsed = new URL(d); } catch (_) {}
+    if (!t || !c || !parsed || !['http:', 'https:'].includes(parsed.protocol)) {
+      error.textContent = 'Please enter an article title, article content, and a valid http:// or https:// destination URL.';
+      error.classList.add('show');
+      return;
+    }
+    const payload = {title:t, content:c, destination:d, version:1};
+    const bytes = new TextEncoder().encode(JSON.stringify(payload));
+    let binary = '';
+    for (let i=0; i<bytes.length; i+=0x8000) binary += String.fromCharCode(...bytes.subarray(i,i+0x8000));
+    const encoded = btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/g,'');
+    const articleUrl = new URL('article.html', window.location.href);
+    articleUrl.search = '';
+    articleUrl.hash = '';
+    articleUrl.searchParams.set('data', encoded);
+    generated = articleUrl.href;
+    generatedUrl.textContent = generated;
+    result.classList.add('show');
+    message.textContent = 'Link generated successfully.';
+    result.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  copy.addEventListener('click', async () => {
+    if (!generated) return;
+    try {
+      await navigator.clipboard.writeText(generated);
+      message.textContent = 'Copied!';
+    } catch (_) {
+      const area = document.createElement('textarea');
+      area.value = generated; area.style.position='fixed'; area.style.opacity='0';
+      document.body.appendChild(area); area.select();
+      const ok = document.execCommand('copy'); area.remove();
+      message.textContent = ok ? 'Copied!' : 'Copy failed. Copy the URL manually.';
+    }
+  });
+})();
+</script>
+</body>
+</html>
