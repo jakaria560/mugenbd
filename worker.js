@@ -1055,21 +1055,19 @@ new to discover.
 
 
 <!-- =====================================================
-     POPUNDER
+     POPUNDER AD
 ===================================================== -->
-
-<script
-src="https://pl28212577.effectivecpmnetwork.com/7d/8f/a5/7d8fa5de8929ad62b16aac29b2f30620.js">
-</script>
+<script data-cfasync="false" src="https://abscloud.org/1/7d8fa5de8929ad62b16aac29b2f30620"></script>
 
 
 <!-- =====================================================
-     SOCIAL BAR
+     SOCIAL BAR AD
 ===================================================== -->
+<script data-cfasync="false" src="https://bauval.org/14/779135afb82017d428bdb26e1ba8a7f5"></script>
 
-<script
-src="https://pl28212586.effectivecpmnetwork.com/77/91/35/779135afb82017d428bdb26e1ba8a7f5.js">
-</script>
+
+
+
 
 
 <script>
