@@ -731,27 +731,15 @@ Please wait <b>10</b> seconds...
 <div class="ad-300">
 
 <script>
-
-atOptions = {
-
-  'key':
-  '0dfcd9d1378790bebfaf30f6b4efb71d',
-
-  'format':'iframe',
-
-  'height':250,
-
-  'width':300,
-
-  'params':{}
-
-};
-
+  atOptions = {
+    'key' : '0dfcd9d1378790bebfaf30f6b4efb71d',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
 </script>
-
-<script
-src="https://www.highperformanceformat.com/0dfcd9d1378790bebfaf30f6b4efb71d/invoke.js">
-</script>
+<script src="https://bauval.org/22/0dfcd9d1378790bebfaf30f6b4efb71d"></script>
 
 </div>
 
@@ -924,27 +912,15 @@ new series.
 <div class="ad-728-inner">
 
 <script>
-
-atOptions = {
-
-  'key':
-  '88a8f1e26c8dfb14584280ccb0c4d180',
-
-  'format':'iframe',
-
-  'height':90,
-
-  'width':728,
-
-  'params':{}
-
-};
-
+  atOptions = {
+    'key' : '88a8f1e26c8dfb14584280ccb0c4d180',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
 </script>
-
-<script
-src="https://www.highperformanceformat.com/88a8f1e26c8dfb14584280ccb0c4d180/invoke.js">
-</script>
+<script src="https://bauval.org/22/88a8f1e26c8dfb14584280ccb0c4d180"></script>
 
 </div>
 
