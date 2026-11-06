@@ -329,6 +329,82 @@
     font-size: 20px;
   }
 }
+
+/* =====================================================
+   ANTI-ADBLOCK POPUP
+===================================================== */
+
+#adblock-bait {
+  position: absolute !important;
+  left: -10000px !important;
+  top: -10000px !important;
+  width: 10px !important;
+  height: 10px !important;
+  overflow: hidden !important;
+}
+
+#adblock-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  background: rgba(0, 0, 0, 0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#adblock-overlay.active {
+  display: flex;
+}
+
+.adblock-card {
+  width: 100%;
+  max-width: 390px;
+  background: #111827;
+  color: #fff;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 30px 23px;
+  text-align: center;
+  font-family: 'Roboto', Arial, sans-serif;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+.adblock-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.adblock-card h2 {
+  color: #fff;
+  font-size: 23px;
+  margin: 0 0 12px;
+}
+
+.adblock-card p {
+  color: #d1d5db;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.adblock-reload {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffb400;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.adblock-reload:active {
+  transform: scale(.98);
+}
 </style>
 </head>
 
@@ -341,6 +417,40 @@
 
   
 <body>
+
+<!-- ANTI-ADBLOCK DETECTION -->
+
+<div id="adblock-bait" class="adsbox ad-banner ad-placement">
+  Advertisement
+</div>
+
+<div id="adblock-overlay">
+  <div class="adblock-card">
+
+    <div class="adblock-icon">🛡️</div>
+
+    <h2>AdBlock Detected!</h2>
+
+    <p>
+      We noticed that you're using an AdBlocker.
+      Please disable your AdBlocker to unlock the links
+      and support MugenBD.
+    </p>
+
+    <p>
+      After disabling AdBlock, reload this page to continue.
+    </p>
+
+    <button
+      class="adblock-reload"
+      onclick="location.reload()"
+      type="button">
+      I've Disabled AdBlock – Reload
+    </button>
+
+  </div>
+</div>
+  
 
 <!-- =====================================================
      HEADER Progress
@@ -803,6 +913,56 @@ MugenBD • Anime Guide
 })();
   </script>
 
+
+  
+<!-- =====================================================
+     ANTI-ADBLOCK DETECTION SCRIPT
+===================================================== -->
+
+<script>
+(function () {
+
+  let adBlockDetected = false;
+
+  function checkAdBlock() {
+
+    const bait = document.getElementById('adblock-bait');
+    const popup = document.getElementById('adblock-overlay');
+
+    if (!bait || !popup) return;
+
+    const style = window.getComputedStyle(bait);
+
+    const isBlocked =
+      bait.offsetWidth === 0 ||
+      bait.offsetHeight === 0 ||
+      style.display === 'none' ||
+      style.visibility === 'hidden';
+
+    if (isBlocked) {
+      adBlockDetected = true;
+
+      popup.classList.add('active');
+
+      document.body.style.overflow = 'hidden';
+    }
+
+  }
+
+  function startDetection() {
+
+    setTimeout(checkAdBlock, 1500);
+
+  }
+
+  if (document.readyState === 'complete') {
+    startDetection();
+  } else {
+    window.addEventListener('load', startDetection);
+  }
+
+})();
+</script>
 
   
 </body>
