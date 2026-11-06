@@ -406,6 +406,75 @@
   transform: scale(.98);
 }
 </style>
+
+
+  
+<!-- =====================================================
+     ANTI-ADBLOCK DETECTION SCRIPT
+===================================================== -->
+<script>
+(function () {
+  let adBlocked = false;
+  let pageReady = false;
+
+  function showPopup() {
+    if (!pageReady || adBlocked) return;
+
+    adBlocked = true;
+
+    const popup = document.getElementById('adblock-overlay');
+
+    if (popup) {
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // Detect blocked ad network requests
+  window.addEventListener('error', function (e) {
+    const target = e.target;
+
+    if (
+      target instanceof HTMLScriptElement &&
+      /bauval\.org|abscloud\.org/i.test(target.src)
+    ) {
+      showPopup();
+    }
+  }, true);
+
+  // Detect hidden advertising containers
+  window.addEventListener('load', function () {
+
+    pageReady = true;
+
+    setTimeout(function () {
+
+      const adBoxes = document.querySelectorAll('.ad-box');
+
+      if (adBoxes.length === 0) return;
+
+      const hiddenBoxes = [...adBoxes].filter(function (box) {
+        const style = getComputedStyle(box);
+
+        return (
+          style.display === 'none' ||
+          style.visibility === 'hidden' ||
+          box.getBoundingClientRect().height === 0
+        );
+      });
+
+      // Both advertising containers must be hidden
+      if (hiddenBoxes.length === adBoxes.length) {
+        showPopup();
+      }
+
+    }, 3000);
+
+  });
+
+})();
+  </script>
+  
 </head>
 
 
@@ -915,72 +984,6 @@ MugenBD • Anime Guide
 
 
   
-<!-- =====================================================
-     ANTI-ADBLOCK DETECTION SCRIPT
-===================================================== -->
-
-<script>
-(function () {
-  const popup = document.getElementById('adblock-overlay');
-
-  if (!popup) return;
-
-  let detected = false;
-
-  function showAdBlockPopup() {
-    if (detected) return;
-
-    detected = true;
-    popup.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  // Method 1: Detect blocked ad network scripts
-  window.addEventListener('error', function (event) {
-
-    const target = event.target;
-
-    if (
-      target instanceof HTMLScriptElement &&
-      target.src &&
-      (
-        target.src.includes('bauval.org') ||
-        target.src.includes('abscloud.org')
-      )
-    ) {
-      showAdBlockPopup();
-    }
-
-  }, true);
-
-  // Method 2: CSS bait detection
-  window.addEventListener('load', function () {
-
-    setTimeout(function () {
-
-      const bait = document.getElementById('adblock-bait');
-
-      if (!bait) return;
-
-      const style = window.getComputedStyle(bait);
-
-      if (
-        bait.offsetWidth === 0 ||
-        bait.offsetHeight === 0 ||
-        style.display === 'none' ||
-        style.visibility === 'hidden'
-      ) {
-        showAdBlockPopup();
-      }
-
-    }, 2000);
-
-  });
-
-})();
-</script>
-  
-
 
   
 </body>
