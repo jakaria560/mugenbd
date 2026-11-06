@@ -921,48 +921,66 @@ MugenBD • Anime Guide
 
 <script>
 (function () {
+  const popup = document.getElementById('adblock-overlay');
 
-  let adBlockDetected = false;
+  if (!popup) return;
 
-  function checkAdBlock() {
+  let detected = false;
 
-    const bait = document.getElementById('adblock-bait');
-    const popup = document.getElementById('adblock-overlay');
+  function showAdBlockPopup() {
+    if (detected) return;
 
-    if (!bait || !popup) return;
+    detected = true;
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-    const style = window.getComputedStyle(bait);
+  // Method 1: Detect blocked ad network scripts
+  window.addEventListener('error', function (event) {
 
-    const isBlocked =
-      bait.offsetWidth === 0 ||
-      bait.offsetHeight === 0 ||
-      style.display === 'none' ||
-      style.visibility === 'hidden';
+    const target = event.target;
 
-    if (isBlocked) {
-      adBlockDetected = true;
-
-      popup.classList.add('active');
-
-      document.body.style.overflow = 'hidden';
+    if (
+      target instanceof HTMLScriptElement &&
+      target.src &&
+      (
+        target.src.includes('bauval.org') ||
+        target.src.includes('abscloud.org')
+      )
+    ) {
+      showAdBlockPopup();
     }
 
-  }
+  }, true);
 
-  function startDetection() {
+  // Method 2: CSS bait detection
+  window.addEventListener('load', function () {
 
-    setTimeout(checkAdBlock, 1500);
+    setTimeout(function () {
 
-  }
+      const bait = document.getElementById('adblock-bait');
 
-  if (document.readyState === 'complete') {
-    startDetection();
-  } else {
-    window.addEventListener('load', startDetection);
-  }
+      if (!bait) return;
+
+      const style = window.getComputedStyle(bait);
+
+      if (
+        bait.offsetWidth === 0 ||
+        bait.offsetHeight === 0 ||
+        style.display === 'none' ||
+        style.visibility === 'hidden'
+      ) {
+        showAdBlockPopup();
+      }
+
+    }, 2000);
+
+  });
 
 })();
 </script>
+  
+
 
   
 </body>
